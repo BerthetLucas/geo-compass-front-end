@@ -32,7 +32,6 @@ export const AppMenu = () => {
           <span className="font-semibold tracking-tight">GEO Compass</span>
         </div>
       </SidebarHeader>
-
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
@@ -51,7 +50,6 @@ export const AppMenu = () => {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-
       <SidebarFooter>
         <div className="px-2 py-1 text-xs text-muted-foreground">
           GEO Compass
