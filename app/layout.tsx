@@ -1,9 +1,10 @@
 import { Geist, Geist_Mono, Roboto } from "next/font/google"
 
 import "./globals.css"
-import { QueryProvider } from "@/components/providers/query-provider"
-import { ThemeProvider } from "@/components/providers/theme-provider"
 import { cn } from "@/lib/utils"
+import { Providers } from "@/components/providers/providers"
+import { AppMenu } from "@/components/AppMenu"
+import { SidebarTrigger } from "@/components/ui/sidebar"
 
 const geistHeading = Geist({ subsets: ["latin"], variable: "--font-heading" })
 
@@ -32,9 +33,13 @@ export default function RootLayout({
       )}
     >
       <body>
-        <QueryProvider>
-          <ThemeProvider>{children}</ThemeProvider>
-        </QueryProvider>
+        <Providers>
+          <AppMenu />
+          <main>
+            <SidebarTrigger />
+            {children}
+          </main>
+        </Providers>
       </body>
     </html>
   )
