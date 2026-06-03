@@ -1,4 +1,8 @@
-import type { BrandRanking, DailyRanking, ComputeRankingResponse } from "@/types/ranking"
+import type {
+  BrandRanking,
+  DailyRanking,
+  ComputeRankingResponse,
+} from "@/types/ranking"
 
 export const mockBrandRankings: BrandRanking[] = [
   { rank: 1, brand: "OpenAI", mentions: 142 },

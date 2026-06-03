@@ -16,7 +16,7 @@ import {
 } from "./ui/sidebar"
 
 const NAV = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/", label: "Dashboard", icon: LayoutDashboard },
   { href: "/prompts", label: "Prompts", icon: MessageSquare },
   { href: "/run", label: "Run", icon: Play },
 ]
