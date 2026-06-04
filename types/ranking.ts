@@ -5,25 +5,25 @@ export interface BrandRanking {
 }
 
 export interface DailyRanking {
-  date: string // ISO date: "YYYY-MM-DD"
+  date: string
   rankings: BrandRanking[]
 }
 
 export interface ComputeRankingResponse {
   success: boolean
-  date: string // ISO date: "YYYY-MM-DD"
+  date: string
 }
 
 export interface GlobalRankingParams {
-  date?: string // ISO date: "YYYY-MM-DD"
+  date?: string
 }
 
 export interface ModelRankingParams {
   model: string
-  date?: string // ISO date: "YYYY-MM-DD"
+  date?: string
 }
 
 export interface PeriodRankingParams {
-  startDate: string // ISO date: "YYYY-MM-DD"
-  endDate: string // ISO date: "YYYY-MM-DD"
+  startDate: string
+  endDate: string
 }
