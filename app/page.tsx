@@ -39,7 +39,7 @@ export default function Page() {
           <h2 className="text-xl">Historic Rankings</h2>
           <p>Les résultats des jours précédents</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap items-center gap-3">
           {mockPeriodRanking.map((dailyRanking) => (
             <HistoricBrandCard
               key={dailyRanking.date}
