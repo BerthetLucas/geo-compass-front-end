@@ -1,4 +1,14 @@
-import type { TooltipEntry, TooltipPayload } from "@/types/chart"
+interface TooltipEntry {
+  name?: string
+  value?: number
+  color?: string
+}
+
+interface TooltipPayload {
+  active?: boolean
+  payload?: TooltipEntry[]
+  label?: string
+}
 
 export const ChartTooltip = ({ active, payload, label }: TooltipPayload) => {
   if (!active || !payload?.length) return null

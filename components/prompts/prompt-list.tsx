@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react"
 import { PromptCard } from "./prompt-card"
-import type { Prompt } from "./types"
+import type { Prompt } from "@/types/prompt"
 
 interface PromptListProps {
   prompts: Prompt[]

@@ -1,3 +1,9 @@
+export interface Prompt {
+  id: string
+  text: string
+  isActive: boolean
+}
+
 export interface PromptResponse {
   text: string
   isActive: boolean

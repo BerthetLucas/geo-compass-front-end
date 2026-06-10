@@ -6,49 +6,29 @@ import { motion } from "motion/react"
 import { PromptsHeader } from "@/components/prompts/prompts-header"
 import { PromptList } from "@/components/prompts/prompt-list"
 import { PromptDialog } from "@/components/prompts/prompt-dialog"
-import type { Prompt } from "@/components/prompts/types"
-import type { PromptFormValues } from "@/components/prompt-form/prompt-schema"
-import { mockPrompts } from "@/mocks/prompts"
+import { usePrompts } from "@/components/prompts/use-prompts"
+import type { PromptFormValues } from "@/components/prompts/prompt-form/prompt-schema"
+import type { Prompt } from "@/types/prompt"
 import { fadeUp } from "@/lib/motion"
 
-function seedPrompts(): Prompt[] {
-  return mockPrompts.map((p, i) => ({ id: String(i + 1), ...p }))
-}
-
 export default function PromptsPage() {
-  const [prompts, setPrompts] = useState<Prompt[]>(seedPrompts)
+  const {
+    prompts,
+    activeCount,
+    addPrompt,
+    editPrompt,
+    togglePrompt,
+    deletePrompt,
+  } = usePrompts()
   const [addOpen, setAddOpen] = useState(false)
   const [editingPrompt, setEditingPrompt] = useState<Prompt | null>(null)
 
-  const handleAdd = (values: PromptFormValues) => {
-    setPrompts((prev) => [
-      ...prev,
-      { id: String(Date.now()), text: values.text, isActive: true },
-    ])
-  }
-
   const handleEdit = (values: PromptFormValues) => {
     if (!editingPrompt) return
-    setPrompts((prev) =>
-      prev.map((p) =>
-        p.id === editingPrompt.id ? { ...p, text: values.text } : p
-      )
-    )
+    editPrompt(editingPrompt.id, values)
     setEditingPrompt(null)
   }
 
-  const handleToggle = (id: string) => {
-    setPrompts((prev) =>
-      prev.map((p) => (p.id === id ? { ...p, isActive: !p.isActive } : p))
-    )
-  }
-
-  const handleDelete = (id: string) => {
-    setPrompts((prev) => prev.filter((p) => p.id !== id))
-  }
-
-  const activeCount = prompts.filter((p) => p.isActive).length
-  const editDialogOpen = editingPrompt !== null
   const editDefaultValues = editingPrompt
     ? { text: editingPrompt.text }
     : undefined
@@ -72,8 +52,8 @@ export default function PromptsPage() {
       <PromptList
         prompts={prompts}
         onEdit={setEditingPrompt}
-        onToggle={handleToggle}
-        onDelete={handleDelete}
+        onToggle={togglePrompt}
+        onDelete={deletePrompt}
       />
 
       <PromptDialog
@@ -81,11 +61,11 @@ export default function PromptsPage() {
         onOpenChange={setAddOpen}
         title="Add prompt"
         submitLabel="Add prompt"
-        onSubmit={handleAdd}
+        onSubmit={addPrompt}
       />
 
       <PromptDialog
-        open={editDialogOpen}
+        open={editingPrompt !== null}
         onOpenChange={closeEditDialog}
         title="Edit prompt"
         defaultValues={editDefaultValues}

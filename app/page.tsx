@@ -2,12 +2,11 @@
 
 import { motion } from "motion/react"
 
-import { DailyBrandRankCard } from "@/components/DailyBrandRankCard"
-import { HistoricRankingChart } from "@/components/historic-ranking-chart/historic-ranking-chart"
+import { DailyRankingList } from "@/components/dashboard/daily-ranking-list"
+import { HistoricRankingSection } from "@/components/dashboard/historic-ranking-section"
 import { Badge } from "@/components/ui/badge"
-import { Card } from "@/components/ui/card"
 import { mockBrandRankings, mockPeriodRanking } from "@/mocks/ranking"
-import { fadeUp, stagger } from "@/lib/motion"
+import { fadeUp } from "@/lib/motion"
 
 export default function Page() {
   const formattedDate = new Date().toLocaleDateString("fr-FR", {
@@ -34,38 +33,9 @@ export default function Page() {
         </Badge>
       </motion.section>
 
-      <motion.section
-        className="mx-10 flex flex-col gap-5"
-        variants={stagger}
-        initial="hidden"
-        animate="visible"
-      >
-        {mockBrandRankings.map((brand) => (
-          <motion.div key={brand.rank} variants={fadeUp}>
-            <DailyBrandRankCard
-              rank={brand.rank}
-              brandName={brand.brand}
-              mentionsNbr={brand.mentions}
-            />
-          </motion.div>
-        ))}
-      </motion.section>
+      <DailyRankingList rankings={mockBrandRankings} />
 
-      <motion.section
-        className="mx-10 mt-10 flex flex-col gap-5"
-        variants={fadeUp}
-        initial="hidden"
-        animate="visible"
-        transition={{ delay: 0.35, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <div className="mb-5 flex flex-col gap-1">
-          <h2 className="text-xl">Historic Rankings</h2>
-          <p>Les résultats des jours précédents</p>
-        </div>
-        <Card className="p-6">
-          <HistoricRankingChart data={mockPeriodRanking} />
-        </Card>
-      </motion.section>
+      <HistoricRankingSection data={mockPeriodRanking} />
     </>
   )
 }

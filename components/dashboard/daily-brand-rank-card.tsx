@@ -1,20 +1,18 @@
 import { ArrowBigDown, ArrowBigUp } from "lucide-react"
-import { Badge } from "./ui/badge"
-import { Card } from "./ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Card } from "@/components/ui/card"
 
 interface DailyBrandRankCardProps {
   rank: number
   brandName: string
-  up?: boolean
-  down?: boolean
+  trend?: "up" | "down"
   mentionsNbr: number
 }
 
 export const DailyBrandRankCard = ({
   rank,
   brandName,
-  up,
-  down,
+  trend,
   mentionsNbr,
 }: DailyBrandRankCardProps) => {
   return (
@@ -24,12 +22,12 @@ export const DailyBrandRankCard = ({
         <p>{brandName}</p>
       </div>
       <div className="flex gap-2">
-        {down && (
+        {trend === "down" && (
           <Badge variant="destructive">
             <ArrowBigDown />
           </Badge>
         )}
-        {up && (
+        {trend === "up" && (
           <Badge variant="default">
             <ArrowBigUp />
           </Badge>

@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
-import type { Prompt } from "./types"
+import type { Prompt } from "@/types/prompt"
 
 interface PromptCardProps {
   prompt: Prompt

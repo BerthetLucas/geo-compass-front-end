@@ -12,7 +12,12 @@ import {
 } from "recharts"
 import type { DailyRanking } from "@/types/ranking"
 import { ChartTooltip } from "./chart-tooltip"
-import { transformData, getUniqueBrands, getBrandColor } from "./utils"
+import {
+  transformData,
+  getUniqueBrands,
+  getBrandColor,
+  getGradientId,
+} from "./utils"
 
 interface HistoricRankingChartProps {
   data: DailyRanking[]
@@ -35,7 +40,7 @@ export const HistoricRankingChart = ({ data }: HistoricRankingChartProps) => {
       >
         <defs>
           {brands.map((brand, i) => {
-            const id = `gradient-${brand.replace(/\s+/g, "-")}`
+            const id = getGradientId(brand)
             const color = getBrandColor(brand, i)
             return (
               <linearGradient key={brand} id={id} x1="0" y1="0" x2="0" y2="1">
@@ -72,7 +77,7 @@ export const HistoricRankingChart = ({ data }: HistoricRankingChartProps) => {
         />
         {brands.map((brand, i) => {
           const color = getBrandColor(brand, i)
-          const fillId = `url(#gradient-${brand.replace(/\s+/g, "-")})`
+          const fillId = `url(#${getGradientId(brand)})`
           return (
             <Area
               key={brand}

@@ -23,6 +23,10 @@ export function getBrandColor(brand: string, fallbackIndex: number): string {
   )
 }
 
+export function getGradientId(brand: string): string {
+  return `gradient-${brand.replace(/\s+/g, "-")}`
+}
+
 export function transformData(data: DailyRanking[]) {
   return data.map((day) => {
     const dateLabel = new Date(day.date).toLocaleDateString("fr-FR", {

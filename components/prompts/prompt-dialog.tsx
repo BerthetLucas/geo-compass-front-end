@@ -6,8 +6,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { PromptForm } from "@/components/prompt-form/prompt-form"
-import type { PromptFormValues } from "@/components/prompt-form/prompt-schema"
+import { PromptForm } from "./prompt-form/prompt-form"
+import type { PromptFormValues } from "./prompt-form/prompt-schema"
 
 interface PromptDialogProps {
   open: boolean

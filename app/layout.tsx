@@ -3,7 +3,7 @@ import { Geist, Geist_Mono, Roboto } from "next/font/google"
 import "./globals.css"
 import { cn } from "@/lib/utils"
 import { Providers } from "@/components/providers/providers"
-import { AppMenu } from "@/components/AppMenu"
+import { AppMenu } from "@/components/layout/app-menu"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 
 const geistHeading = Geist({ subsets: ["latin"], variable: "--font-heading" })
