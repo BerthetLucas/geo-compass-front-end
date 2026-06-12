@@ -9,9 +9,17 @@ const apiClient = axios.create({
   },
 })
 
+async function getToken(): Promise<string | undefined> {
+  if (typeof window === "undefined") {
+    const { cookies } = await import("next/headers")
+    return (await cookies()).get("token")?.value
+  }
+  return Cookies.get("token")
+}
+
 apiClient.interceptors.request.use(
-  (config) => {
-    const token = Cookies.get("token")
+  async (config) => {
+    const token = await getToken()
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`
     }
@@ -20,7 +28,6 @@ apiClient.interceptors.request.use(
   (error) => {
     if (error.response && error.response.status === 401) {
       Cookies.remove("token")
-      window.location.href = "/login"
     }
 
     return Promise.reject(error)
