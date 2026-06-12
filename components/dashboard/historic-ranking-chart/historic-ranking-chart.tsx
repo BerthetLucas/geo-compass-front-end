@@ -33,7 +33,7 @@ export const HistoricRankingChart = ({ data }: HistoricRankingChartProps) => {
   const brands = getUniqueBrands(data)
 
   return (
-    <ResponsiveContainer width="100%" height={320}>
+    <ResponsiveContainer width="100%" height={560}>
       <AreaChart
         data={chartData}
         margin={{ top: 4, right: 4, left: -16, bottom: 0 }}

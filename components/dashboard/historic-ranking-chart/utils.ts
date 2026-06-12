@@ -8,42 +8,61 @@ const BRAND_COLORS: Record<string, string> = {
   Mistral: "var(--brand-mistral)",
 }
 
-const FALLBACK_COLORS = [
-  "var(--chart-1)",
-  "var(--chart-2)",
-  "var(--chart-3)",
-  "var(--chart-4)",
-  "var(--chart-5)",
-]
+// Golden-angle hue spread → distinct colors for any brand count
+const GOLDEN_ANGLE = 137.508
 
 export function getBrandColor(brand: string, fallbackIndex: number): string {
-  return (
-    BRAND_COLORS[brand] ??
-    FALLBACK_COLORS[fallbackIndex % FALLBACK_COLORS.length]
-  )
+  if (BRAND_COLORS[brand]) return BRAND_COLORS[brand]
+  const hue = Math.round((fallbackIndex * GOLDEN_ANGLE) % 360)
+  return `hsl(${hue}, 65%, 55%)`
 }
 
 export function getGradientId(brand: string): string {
   return `gradient-${brand.replace(/\s+/g, "-")}`
 }
 
+// Grouping key: strip accents + case + extra spaces so "Pâgero" === "pagero"
+function brandKey(name: string): string {
+  return name
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/\s+/g, " ")
+    .trim()
+}
+
+function cleanLabel(name: string): string {
+  return name.replace(/\s+/g, " ").trim()
+}
+
+// Map normalized key -> canonical display label (first spelling seen)
+function buildCanonicalMap(data: DailyRanking[]): Map<string, string> {
+  const map = new Map<string, string>()
+  for (const day of data) {
+    for (const r of day.rankings) {
+      const key = brandKey(r.brand)
+      if (!map.has(key)) map.set(key, cleanLabel(r.brand))
+    }
+  }
+  return map
+}
+
 export function transformData(data: DailyRanking[]) {
+  const canonical = buildCanonicalMap(data)
   return data.map((day) => {
-    const dateLabel = new Date(day.date).toLocaleDateString("fr-FR", {
+    const dateLabel = new Date(day.date).toLocaleDateString("en-US", {
       month: "short",
       day: "numeric",
     })
-    const mentions = Object.fromEntries(
-      day.rankings.map((r) => [r.brand, r.mentions])
-    )
+    const mentions: Record<string, number> = {}
+    for (const r of day.rankings) {
+      const label = canonical.get(brandKey(r.brand)) ?? cleanLabel(r.brand)
+      mentions[label] = (mentions[label] ?? 0) + r.mentions
+    }
     return { date: dateLabel, ...mentions }
   })
 }
 
 export function getUniqueBrands(data: DailyRanking[]): string[] {
-  const seen = new Set<string>()
-  for (const day of data) {
-    for (const r of day.rankings) seen.add(r.brand)
-  }
-  return [...seen]
+  return [...buildCanonicalMap(data).values()]
 }

@@ -17,5 +17,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/prompts/:path*"],
+  matcher: ["/", "/historic", "/prompts/:path*"],
 }
