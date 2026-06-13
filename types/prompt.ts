@@ -1,10 +1,11 @@
 export interface Prompt {
-  id: string
+  id: number
   text: string
   isActive: boolean
 }
 
 export interface PromptResponse {
+  id: number
   text: string
   isActive: boolean
 }

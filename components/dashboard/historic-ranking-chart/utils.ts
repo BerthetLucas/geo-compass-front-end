@@ -8,21 +8,22 @@ const BRAND_COLORS: Record<string, string> = {
   Mistral: "var(--brand-mistral)",
 }
 
-// Golden-angle hue spread → distinct colors for any brand count
 const GOLDEN_ANGLE = 137.508
+const MAX_BRANDS = 5
 
 export function getBrandColor(brand: string, fallbackIndex: number): string {
-  if (BRAND_COLORS[brand]) return BRAND_COLORS[brand]
-  const hue = Math.round((fallbackIndex * GOLDEN_ANGLE) % 360)
-  return `hsl(${hue}, 65%, 55%)`
+  const known = BRAND_COLORS[brand]
+  if (known) return known
+
+  const spreadHue = Math.round((fallbackIndex * GOLDEN_ANGLE) % 360)
+  return `hsl(${spreadHue}, 65%, 55%)`
 }
 
 export function getGradientId(brand: string): string {
   return `gradient-${brand.replace(/\s+/g, "-")}`
 }
 
-// Grouping key: strip accents + case + extra spaces so "Pâgero" === "pagero"
-function brandKey(name: string): string {
+function normalizeForGrouping(name: string): string {
   return name
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
@@ -31,52 +32,71 @@ function brandKey(name: string): string {
     .trim()
 }
 
-function cleanLabel(name: string): string {
+function normalizeForDisplay(name: string): string {
   return name.replace(/\s+/g, " ").trim()
 }
 
-// Map normalized key -> canonical display label (first spelling seen)
-function buildCanonicalMap(data: DailyRanking[]): Map<string, string> {
-  const map = new Map<string, string>()
+function mapKeyToFirstSpelling(data: DailyRanking[]): Map<string, string> {
+  const firstSpelling = new Map<string, string>()
   for (const day of data) {
-    for (const r of day.rankings) {
-      const key = brandKey(r.brand)
-      if (!map.has(key)) map.set(key, cleanLabel(r.brand))
+    for (const ranking of day.rankings) {
+      const key = normalizeForGrouping(ranking.brand)
+      if (!firstSpelling.has(key)) {
+        firstSpelling.set(key, normalizeForDisplay(ranking.brand))
+      }
     }
   }
-  return map
+  return firstSpelling
 }
 
-export function transformData(data: DailyRanking[]) {
-  const canonical = buildCanonicalMap(data)
-  return data.map((day) => {
-    const dateLabel = new Date(day.date).toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-    })
-    const mentions: Record<string, number> = {}
-    for (const r of day.rankings) {
-      const label = canonical.get(brandKey(r.brand)) ?? cleanLabel(r.brand)
-      mentions[label] = (mentions[label] ?? 0) + r.mentions
-    }
-    return { date: dateLabel, ...mentions }
+function sumMentionsByBrand(
+  rankings: DailyRanking["rankings"],
+  displayLabel: (brand: string) => string
+): Record<string, number> {
+  const totals: Record<string, number> = {}
+  for (const ranking of rankings) {
+    const label = displayLabel(ranking.brand)
+    totals[label] = (totals[label] ?? 0) + ranking.mentions
+  }
+  return totals
+}
+
+function formatDateLabel(date: string): string {
+  return new Date(date).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
   })
 }
 
-const MAX_BRANDS = 5
+export function transformData(data: DailyRanking[]) {
+  const canonical = mapKeyToFirstSpelling(data)
+  const displayLabel = (brand: string) =>
+    canonical.get(normalizeForGrouping(brand)) ?? normalizeForDisplay(brand)
 
-// Top brands by total mentions over the whole period
+  return data.map((day) => ({
+    date: formatDateLabel(day.date),
+    ...sumMentionsByBrand(day.rankings, displayLabel),
+  }))
+}
+
 export function getUniqueBrands(data: DailyRanking[]): string[] {
-  const canonical = buildCanonicalMap(data)
-  const totals = new Map<string, number>()
+  const canonical = mapKeyToFirstSpelling(data)
+  const displayLabel = (brand: string) =>
+    canonical.get(normalizeForGrouping(brand)) ?? normalizeForDisplay(brand)
+
+  const totalMentions = new Map<string, number>()
   for (const day of data) {
-    for (const r of day.rankings) {
-      const label = canonical.get(brandKey(r.brand)) ?? cleanLabel(r.brand)
-      totals.set(label, (totals.get(label) ?? 0) + r.mentions)
+    for (const ranking of day.rankings) {
+      const label = displayLabel(ranking.brand)
+      totalMentions.set(
+        label,
+        (totalMentions.get(label) ?? 0) + ranking.mentions
+      )
     }
   }
-  return [...totals.entries()]
-    .sort((a, b) => b[1] - a[1])
+
+  return [...totalMentions.entries()]
+    .sort(([, a], [, b]) => b - a)
     .slice(0, MAX_BRANDS)
     .map(([label]) => label)
 }

@@ -6,36 +6,9 @@ import type { Prompt } from "@/types/prompt"
 
 interface PromptListProps {
   prompts: Prompt[]
-  onEdit: (prompt: Prompt) => void
-  onToggle: (id: string) => void
-  onDelete: (id: string) => void
 }
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.35,
-      delay: i * 0.06,
-      ease: [0.16, 1, 0.3, 1] as const,
-    },
-  }),
-  exit: {
-    opacity: 0,
-    y: -6,
-    scale: 0.98,
-    transition: { duration: 0.2, ease: [0.4, 0, 1, 1] as const },
-  },
-}
-
-export function PromptList({
-  prompts,
-  onEdit,
-  onToggle,
-  onDelete,
-}: PromptListProps) {
+export function PromptList({ prompts }: PromptListProps) {
   if (prompts.length === 0) {
     return (
       <motion.p
@@ -55,18 +28,12 @@ export function PromptList({
           <motion.div
             key={prompt.id}
             custom={i}
-            variants={itemVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
             layout
           >
-            <PromptCard
-              prompt={prompt}
-              onEdit={onEdit}
-              onToggle={onToggle}
-              onDelete={onDelete}
-            />
+            <PromptCard prompt={prompt} />
           </motion.div>
         ))}
       </AnimatePresence>

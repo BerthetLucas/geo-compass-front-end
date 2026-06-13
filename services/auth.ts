@@ -21,3 +21,7 @@ export async function register(
   Cookies.set("token", response.data.access_token, { expires: 7 })
   return response.data
 }
+
+export function signOut(): void {
+  Cookies.remove("token")
+}
