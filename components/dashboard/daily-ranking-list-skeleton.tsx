@@ -20,7 +20,7 @@ const RankCardSkeleton = () => (
 )
 
 export const DailyRankingListSkeleton = () => (
-  <div className="mx-10 flex flex-col gap-8">
+  <div className="flex flex-col gap-8">
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
       {Array.from({ length: 2 }).map((_, i) => (
         <StatCardSkeleton key={i} />

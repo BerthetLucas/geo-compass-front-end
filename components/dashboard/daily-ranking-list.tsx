@@ -12,7 +12,7 @@ export const DailyRankingList = () => {
 
   return (
     <motion.div
-      className="mx-10 flex flex-col gap-8"
+      className="flex flex-col gap-8"
       variants={stagger}
       initial="hidden"
       animate="visible"
