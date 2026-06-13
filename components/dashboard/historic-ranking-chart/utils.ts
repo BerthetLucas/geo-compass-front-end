@@ -63,6 +63,20 @@ export function transformData(data: DailyRanking[]) {
   })
 }
 
+const MAX_BRANDS = 5
+
+// Top brands by total mentions over the whole period
 export function getUniqueBrands(data: DailyRanking[]): string[] {
-  return [...buildCanonicalMap(data).values()]
+  const canonical = buildCanonicalMap(data)
+  const totals = new Map<string, number>()
+  for (const day of data) {
+    for (const r of day.rankings) {
+      const label = canonical.get(brandKey(r.brand)) ?? cleanLabel(r.brand)
+      totals.set(label, (totals.get(label) ?? 0) + r.mentions)
+    }
+  }
+  return [...totals.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, MAX_BRANDS)
+    .map(([label]) => label)
 }
