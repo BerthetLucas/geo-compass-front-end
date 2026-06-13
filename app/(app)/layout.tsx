@@ -5,7 +5,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
       <AppMenu />
-      <main className="w-full">
+      <main className="mb-10 w-full">
         <SidebarTrigger />
         {children}
       </main>

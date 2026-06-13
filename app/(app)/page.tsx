@@ -1,5 +1,5 @@
 import { Suspense } from "react"
-import { DailyRankingList } from "@/components/dashboard/daily-ranking-list"
+import { RankingTabs } from "@/components/dashboard/ranking-tabs"
 import { DailyRankingListSkeleton } from "@/components/dashboard/daily-ranking-list-skeleton"
 import { Badge } from "@/components/ui/badge"
 
@@ -22,8 +22,14 @@ export default function Page() {
           {formattedDate}
         </Badge>
       </section>
-      <Suspense fallback={<DailyRankingListSkeleton />}>
-        <DailyRankingList />
+      <Suspense
+        fallback={
+          <div className="mx-10">
+            <DailyRankingListSkeleton />
+          </div>
+        }
+      >
+        <RankingTabs />
       </Suspense>
     </>
   )
