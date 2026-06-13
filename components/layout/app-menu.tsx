@@ -1,6 +1,12 @@
 "use client"
 
-import { LayoutDashboard, MessageSquare, Play, Hexagon } from "lucide-react"
+import {
+  LayoutDashboard,
+  MessageSquare,
+  Play,
+  LineChart,
+  Hexagon,
+} from "lucide-react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import {
@@ -17,6 +23,7 @@ import {
 
 const NAV = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/historic", label: "History", icon: LineChart },
   { href: "/prompts", label: "Prompts", icon: MessageSquare },
   { href: "/run", label: "Run", icon: Play },
 ]
