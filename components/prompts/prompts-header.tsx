@@ -4,18 +4,24 @@ import { motion } from "motion/react"
 import { Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { fadeUp } from "@/lib/motion"
+import { useGetPromptListSuspenseQuery } from "@/hooks/queries/useGetPromptList"
 
 interface PromptsHeaderProps {
   activeCount: number
   totalCount: number
-  onAdd: () => void
+  onAddPromptClick: () => void
 }
 
 export function PromptsHeader({
   activeCount,
   totalCount,
-  onAdd,
+  onAddPromptClick,
 }: PromptsHeaderProps) {
+  const { data: prompts } = useGetPromptListSuspenseQuery()
+  const MAX_PROMPTS = 5
+
+  const isLimitReach = prompts.length >= MAX_PROMPTS
+
   return (
     <motion.div
       className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center"
@@ -30,10 +36,12 @@ export function PromptsHeader({
           selected model
         </p>
       </div>
-      <Button size="sm" onClick={onAdd}>
-        <Plus className="size-4" />
-        Add prompt
-      </Button>
+      {!isLimitReach && (
+        <Button size="sm" onClick={onAddPromptClick}>
+          <Plus className="size-4" />
+          Add prompt
+        </Button>
+      )}
     </motion.div>
   )
 }

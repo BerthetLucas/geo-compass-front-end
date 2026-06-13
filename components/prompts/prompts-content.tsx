@@ -24,7 +24,7 @@ export function PromptsContent() {
       <PromptsHeader
         activeCount={activeCount}
         totalCount={prompts.length}
-        onAdd={() => setAddPromptModalOpen(true)}
+        onAddPromptClick={() => setAddPromptModalOpen(true)}
       />
       <PromptList prompts={prompts} />
       <PromptDialog
