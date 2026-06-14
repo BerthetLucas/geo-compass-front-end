@@ -8,6 +8,8 @@ interface DailyBrandRankCardProps {
   maxMentions: number
 }
 
+// test
+
 const RANK_ACCENT: Record<number, string> = {
   1: "bg-primary text-primary-foreground ring-primary/30",
   2: "bg-primary/70 text-primary-foreground ring-primary/20",
