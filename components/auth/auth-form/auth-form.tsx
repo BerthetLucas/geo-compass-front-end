@@ -27,7 +27,7 @@ export function AuthForm() {
 
   return (
     <form
-      className="flex min-w-md flex-col gap-4 rounded-md border bg-background p-6 shadow"
+      className="flex w-full flex-col gap-4 rounded-md border bg-background p-6 shadow"
       onSubmit={handleSubmit(handleLoginFormSubmit)}
     >
       <Field>
