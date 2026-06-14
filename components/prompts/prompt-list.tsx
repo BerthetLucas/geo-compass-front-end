@@ -1,14 +1,14 @@
 "use client"
 
 import { AnimatePresence, motion } from "motion/react"
+import { useTranslations } from "next-intl"
 import { PromptCard } from "./prompt-card"
-import type { Prompt } from "@/types/prompt"
+import { useGetPromptListSuspenseQuery } from "@/hooks/queries/useGetPromptList"
 
-interface PromptListProps {
-  prompts: Prompt[]
-}
+export function PromptList() {
+  const { data: prompts } = useGetPromptListSuspenseQuery()
+  const t = useTranslations("prompts")
 
-export function PromptList({ prompts }: PromptListProps) {
   if (prompts.length === 0) {
     return (
       <motion.p
@@ -16,7 +16,7 @@ export function PromptList({ prompts }: PromptListProps) {
         animate={{ opacity: 1 }}
         className="text-sm text-muted-foreground"
       >
-        No prompts yet. Add one above.
+        {t("empty")}
       </motion.p>
     )
   }

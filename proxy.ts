@@ -5,32 +5,37 @@ import { routing } from "./i18n/routing"
 
 const intlMiddleware = createMiddleware(routing)
 
+const PUBLIC_AUTH_PATHS = ["/login", "/register"]
+
+function getLocale(pathname: string): string {
+  const segment = pathname.split("/")[1]
+  return (routing.locales as readonly string[]).includes(segment)
+    ? segment
+    : routing.defaultLocale
+}
+
+function stripLocale(pathname: string): string {
+  const segment = pathname.split("/")[1]
+  if ((routing.locales as readonly string[]).includes(segment)) {
+    return pathname.slice(segment.length + 1) || "/"
+  }
+  return pathname
+}
+
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
-
-  // Skip auth check for auth pages
-  const isPublicAuthPage =
-    pathname === "/login" ||
-    pathname === "/en/login" ||
-    pathname === "/fr/login" ||
-    pathname === "/register" ||
-    pathname === "/en/register" ||
-    pathname === "/fr/register"
-
+  const locale = getLocale(pathname)
+  const isPublicAuthPage = PUBLIC_AUTH_PATHS.includes(stripLocale(pathname))
   const token = request.cookies.get("token")?.value
 
   if (!token && !isPublicAuthPage) {
-    // Redirect to locale-aware login
-    const locale = pathname.startsWith("/fr") ? "fr" : "en"
     return NextResponse.redirect(new URL(`/${locale}/login`, request.url))
   }
 
   if (token && isPublicAuthPage) {
-    const locale = pathname.startsWith("/fr") ? "fr" : "en"
     return NextResponse.redirect(new URL(`/${locale}`, request.url))
   }
 
-  // Run next-intl middleware for locale routing
   return intlMiddleware(request)
 }
 

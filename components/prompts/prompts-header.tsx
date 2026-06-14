@@ -6,23 +6,19 @@ import { Button } from "@/components/ui/button"
 import { fadeUp } from "@/lib/motion"
 import { useGetPromptListSuspenseQuery } from "@/hooks/queries/useGetPromptList"
 import { useTranslations } from "next-intl"
+import { MAX_PROMPTS } from "@/config/config"
 
 interface PromptsHeaderProps {
-  activeCount: number
-  totalCount: number
   onAddPromptClick: () => void
 }
 
-export function PromptsHeader({
-  activeCount,
-  totalCount,
-  onAddPromptClick,
-}: PromptsHeaderProps) {
+export function PromptsHeader({ onAddPromptClick }: PromptsHeaderProps) {
   const { data: prompts } = useGetPromptListSuspenseQuery()
   const t = useTranslations("prompts")
-  const MAX_PROMPTS = 5
 
-  const isLimitReach = prompts.length >= MAX_PROMPTS
+  const totalCount = prompts.length
+  const activeCount = prompts.filter((p) => p.isActive).length
+  const isLimitReach = totalCount >= MAX_PROMPTS
 
   return (
     <motion.div

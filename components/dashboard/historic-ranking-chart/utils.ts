@@ -61,28 +61,27 @@ function sumMentionsByBrand(
   return totals
 }
 
-function formatDateLabel(date: string): string {
-  return new Date(date).toLocaleDateString("en-US", {
+function formatDateLabel(date: string, locale: string): string {
+  return new Date(date).toLocaleDateString(locale, {
     month: "short",
     day: "numeric",
   })
 }
 
-export function transformData(data: DailyRanking[]) {
+/**
+ * Builds everything the chart needs in a single pass over the data:
+ * the per-day series (`chartData`) and the top brands by total mentions
+ * (`brands`). Brand spellings are canonicalized once and shared.
+ */
+export function prepareChartData(data: DailyRanking[], locale: string) {
   const canonical = mapKeyToFirstSpelling(data)
   const displayLabel = (brand: string) =>
     canonical.get(normalizeForGrouping(brand)) ?? normalizeForDisplay(brand)
 
-  return data.map((day) => ({
-    date: formatDateLabel(day.date),
+  const chartData = data.map((day) => ({
+    date: formatDateLabel(day.date, locale),
     ...sumMentionsByBrand(day.rankings, displayLabel),
   }))
-}
-
-export function getUniqueBrands(data: DailyRanking[]): string[] {
-  const canonical = mapKeyToFirstSpelling(data)
-  const displayLabel = (brand: string) =>
-    canonical.get(normalizeForGrouping(brand)) ?? normalizeForDisplay(brand)
 
   const totalMentions = new Map<string, number>()
   for (const day of data) {
@@ -95,8 +94,10 @@ export function getUniqueBrands(data: DailyRanking[]): string[] {
     }
   }
 
-  return [...totalMentions.entries()]
+  const brands = [...totalMentions.entries()]
     .sort(([, a], [, b]) => b - a)
     .slice(0, MAX_BRANDS)
     .map(([label]) => label)
+
+  return { chartData, brands }
 }

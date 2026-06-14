@@ -2,12 +2,13 @@ import { Suspense } from "react"
 import { RankingTabs } from "@/components/dashboard/ranking-tabs"
 import { DailyRankingListSkeleton } from "@/components/dashboard/daily-ranking-list-skeleton"
 import { Badge } from "@/components/ui/badge"
-import { getTranslations } from "next-intl/server"
+import { getTranslations, getLocale } from "next-intl/server"
 
 export default async function Page() {
   const t = await getTranslations("dashboard")
+  const locale = await getLocale()
 
-  const formattedDate = new Date().toLocaleDateString("en-US", {
+  const formattedDate = new Date().toLocaleDateString(locale, {
     weekday: "long",
     year: "numeric",
     month: "long",

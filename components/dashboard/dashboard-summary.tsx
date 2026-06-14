@@ -5,16 +5,13 @@ import { motion } from "motion/react"
 import { Card } from "@/components/ui/card"
 import { fadeUp } from "@/lib/motion"
 import { useTranslations } from "next-intl"
-import type { BrandRanking } from "@/types/ranking"
-
-interface DashboardSummaryProps {
-  rankings: BrandRanking[]
-}
+import { useGetDailyRankingSuspenseQuery } from "@/hooks/queries/useGetDailyRanking"
 
 const STAT_ICON = "size-4 text-primary"
 
-export const DashboardSummary = ({ rankings }: DashboardSummaryProps) => {
+export const DashboardSummary = () => {
   const t = useTranslations("dashboard")
+  const { data: rankings } = useGetDailyRankingSuspenseQuery()
   const leader = rankings.find((r) => r.rank === 1) ?? rankings[0]
 
   const stats = [

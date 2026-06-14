@@ -33,16 +33,21 @@
     "subtitle": "Résultats du jour",
     "leader": "Leader du jour",
     "mentions": "{count} mentions",
+    "mentionsLabel": "mentions",
+    "noModelData": "Aucune donnée pour ce modèle.",
     "brandsCited": "Marques citées",
     "acrossPrompts": "sur vos prompts",
     "global": "Global"
   },
   "historic": {
     "title": "Historique",
-    "subtitle": "Évolution du classement sur la période"
+    "subtitle": "Évolution du classement sur la période",
+    "chartTitle": "Classements historiques",
+    "chartSubtitle": "Résultats des jours précédents"
   },
   "prompts": {
     "title": "Prompts",
+    "empty": "Aucun prompt pour le moment. Ajoutez-en un ci-dessus.",
     "stats": "{activeCount} actif · {totalCount} total — interrogé sur chaque modèle sélectionné",
     "addPrompt": "Ajouter un prompt",
     "active": "actif",
