@@ -1,0 +1,65 @@
+{
+  "auth": {
+    "login": {
+      "title": "Welcome",
+      "subtitle": "Sign in to access your AI brand rankings dashboard.",
+      "noAccount": "Don't have an account?",
+      "createOne": "Create one",
+      "error": "Login error"
+    },
+    "register": {
+      "title": "Create an account",
+      "subtitle": "Sign up to access your AI brand rankings dashboard.",
+      "hasAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "error": "Account creation error"
+    },
+    "form": {
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "login": "Login",
+      "createAccount": "Create account"
+    },
+    "signOut": "Sign out"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "history": "History",
+    "prompts": "Prompts"
+  },
+  "dashboard": {
+    "title": "Rankings",
+    "subtitle": "Results for today",
+    "leader": "Today's leader",
+    "mentions": "{count} mentions",
+    "brandsCited": "Brands cited",
+    "acrossPrompts": "across your prompts",
+    "global": "Global"
+  },
+  "historic": {
+    "title": "History",
+    "subtitle": "Ranking evolution over the period"
+  },
+  "prompts": {
+    "title": "Prompts",
+    "stats": "{activeCount} active · {totalCount} total — queried against every selected model",
+    "addPrompt": "Add prompt",
+    "active": "active",
+    "inactive": "inactive",
+    "setInactive": "Set inactive",
+    "setActive": "Set active",
+    "edit": "Edit",
+    "delete": "Delete",
+    "editTitle": "Edit prompt",
+    "addTitle": "Add prompt",
+    "save": "Save",
+    "cancel": "Cancel",
+    "addSubmit": "Add prompt",
+    "actions": "Prompt actions",
+    "form": {
+      "label": "Prompt",
+      "placeholder": "What are the best running shoes for marathon training?"
+    }
+  }
+}
