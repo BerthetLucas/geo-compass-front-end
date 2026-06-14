@@ -1,20 +1,23 @@
 "use client"
 
-import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname, useRouter, Link } from "@/lib/navigation"
+import { useTranslations } from "next-intl"
 import { LayoutDashboard, LineChart, MessageSquare, LogOut } from "lucide-react"
 import { motion } from "motion/react"
 import { signOut } from "@/services/auth"
-
-const NAV = [
-  { href: "/", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/historic", label: "History", icon: LineChart },
-  { href: "/prompts", label: "Prompts", icon: MessageSquare },
-]
+import { LocaleSwitcher } from "@/components/layout/locale-switcher"
 
 export const MobileBottomNav = () => {
   const pathname = usePathname()
   const router = useRouter()
+  const t = useTranslations("nav")
+  const tAuth = useTranslations("auth")
+
+  const NAV = [
+    { href: "/", label: t("dashboard"), icon: LayoutDashboard },
+    { href: "/historic", label: t("history"), icon: LineChart },
+    { href: "/prompts", label: t("prompts"), icon: MessageSquare },
+  ]
 
   const handleSignOut = () => {
     signOut()
@@ -46,9 +49,7 @@ export const MobileBottomNav = () => {
                 >
                   <Icon
                     size={22}
-                    className={
-                      active ? "text-primary" : "text-muted-foreground"
-                    }
+                    className={active ? "text-primary" : "text-muted-foreground"}
                     strokeWidth={active ? 2.2 : 1.7}
                   />
                 </motion.div>
@@ -66,15 +67,12 @@ export const MobileBottomNav = () => {
             onClick={handleSignOut}
             className="flex min-w-14 flex-col items-center gap-0.5 px-4 py-2"
           >
-            <LogOut
-              size={22}
-              className="text-muted-foreground"
-              strokeWidth={1.7}
-            />
+            <LogOut size={22} className="text-muted-foreground" strokeWidth={1.7} />
             <span className="text-[10px] font-medium tracking-tight text-muted-foreground">
-              Sign out
+              {tAuth("signOut")}
             </span>
           </button>
+          <LocaleSwitcher />
         </div>
       </div>
     </nav>
