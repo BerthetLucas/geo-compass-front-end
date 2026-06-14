@@ -10,14 +10,10 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts"
+import { useLocale } from "next-intl"
 import type { DailyRanking } from "@/types/ranking"
 import { ChartTooltip } from "./chart-tooltip"
-import {
-  transformData,
-  getUniqueBrands,
-  getBrandColor,
-  getGradientId,
-} from "./utils"
+import { prepareChartData, getBrandColor, getGradientId } from "./utils"
 
 interface HistoricRankingChartProps {
   data: DailyRanking[]
@@ -29,8 +25,8 @@ const AXIS_STYLE = {
 }
 
 export const HistoricRankingChart = ({ data }: HistoricRankingChartProps) => {
-  const chartData = transformData(data)
-  const brands = getUniqueBrands(data)
+  const locale = useLocale()
+  const { chartData, brands } = prepareChartData(data, locale)
 
   return (
     <ResponsiveContainer width="100%" height={560}>

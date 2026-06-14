@@ -9,20 +9,6 @@ export interface DailyRanking {
   rankings: BrandRanking[]
 }
 
-export interface ComputeRankingResponse {
-  success: boolean
-  date: string
-}
-
-export interface GlobalRankingParams {
-  date?: string
-}
-
-export interface ModelRankingParams {
-  model: string
-  date?: string
-}
-
 export interface PeriodRankingParams {
   startDate: string
   endDate: string

@@ -17,7 +17,7 @@ export const DailyRankingList = () => {
       initial="hidden"
       animate="visible"
     >
-      <DashboardSummary rankings={rankings} />
+      <DashboardSummary />
       <section className="flex flex-col gap-3">
         {rankings.map((brand) => (
           <motion.div key={brand.rank} variants={fadeUp}>

@@ -1,14 +1,9 @@
 "use client"
 
-import {
-  LayoutDashboard,
-  MessageSquare,
-  LineChart,
-  Hexagon,
-  LogOut,
-} from "lucide-react"
-import { usePathname, useRouter, Link } from "@/lib/navigation"
+import { Hexagon, LogOut } from "lucide-react"
+import { usePathname, Link } from "@/lib/navigation"
 import { useTranslations } from "next-intl"
+import { useNavItems, useSignOut } from "@/hooks/use-nav"
 import {
   Sidebar,
   SidebarContent,
@@ -20,25 +15,13 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { signOut } from "@/services/auth"
 import { LocaleSwitcher } from "@/components/layout/locale-switcher"
 
 export const AppMenu = () => {
   const pathname = usePathname()
-  const router = useRouter()
-  const t = useTranslations("nav")
   const tAuth = useTranslations("auth")
-
-  const NAV = [
-    { href: "/", label: t("dashboard"), icon: LayoutDashboard },
-    { href: "/historic", label: t("history"), icon: LineChart },
-    { href: "/prompts", label: t("prompts"), icon: MessageSquare },
-  ]
-
-  const handleSignOut = () => {
-    signOut()
-    router.push("/login")
-  }
+  const navItems = useNavItems()
+  const handleSignOut = useSignOut()
 
   return (
     <Sidebar>
@@ -52,7 +35,7 @@ export const AppMenu = () => {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {NAV.map(({ href, label, icon: Icon }) => (
+              {navItems.map(({ href, label, icon: Icon }) => (
                 <SidebarMenuItem key={href}>
                   <SidebarMenuButton asChild isActive={pathname === href}>
                     <Link href={href}>

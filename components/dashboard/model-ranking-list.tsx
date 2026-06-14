@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "motion/react"
+import { useTranslations } from "next-intl"
 import { DailyBrandRankCard } from "./daily-brand-rank-card"
 import { fadeUp, stagger } from "@/lib/motion"
 import { useGetModelRankingSuspenseQuery } from "@/hooks/queries/useGetModelRanking"
@@ -11,11 +12,12 @@ interface ModelRankingListProps {
 
 export const ModelRankingList = ({ model }: ModelRankingListProps) => {
   const { data: rankings } = useGetModelRankingSuspenseQuery(model)
+  const t = useTranslations("dashboard")
   const maxMentions = Math.max(...rankings.map((b) => b.mentions), 0)
 
   if (rankings.length === 0) {
     return (
-      <p className="text-sm text-muted-foreground">No data for this model.</p>
+      <p className="text-sm text-muted-foreground">{t("noModelData")}</p>
     )
   }
 

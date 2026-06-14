@@ -17,19 +17,20 @@ async function getToken(): Promise<string | undefined> {
   return Cookies.get("token")
 }
 
-apiClient.interceptors.request.use(
-  async (config) => {
-    const token = await getToken()
-    if (token) {
-      config.headers["Authorization"] = `Bearer ${token}`
-    }
-    return config
-  },
+apiClient.interceptors.request.use(async (config) => {
+  const token = await getToken()
+  if (token) {
+    config.headers["Authorization"] = `Bearer ${token}`
+  }
+  return config
+})
+
+apiClient.interceptors.response.use(
+  (response) => response,
   (error) => {
-    if (error.response && error.response.status === 401) {
+    if (error.response?.status === 401 && typeof window !== "undefined") {
       Cookies.remove("token")
     }
-
     return Promise.reject(error)
   }
 )

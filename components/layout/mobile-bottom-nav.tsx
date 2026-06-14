@@ -1,34 +1,23 @@
 "use client"
 
-import { usePathname, useRouter, Link } from "@/lib/navigation"
+import { usePathname, Link } from "@/lib/navigation"
 import { useTranslations } from "next-intl"
-import { LayoutDashboard, LineChart, MessageSquare, LogOut } from "lucide-react"
+import { LogOut } from "lucide-react"
 import { motion } from "motion/react"
-import { signOut } from "@/services/auth"
+import { useNavItems, useSignOut } from "@/hooks/use-nav"
 import { LocaleSwitcher } from "@/components/layout/locale-switcher"
 
 export const MobileBottomNav = () => {
   const pathname = usePathname()
-  const router = useRouter()
-  const t = useTranslations("nav")
   const tAuth = useTranslations("auth")
-
-  const NAV = [
-    { href: "/", label: t("dashboard"), icon: LayoutDashboard },
-    { href: "/historic", label: t("history"), icon: LineChart },
-    { href: "/prompts", label: t("prompts"), icon: MessageSquare },
-  ]
-
-  const handleSignOut = () => {
-    signOut()
-    router.push("/login")
-  }
+  const navItems = useNavItems()
+  const handleSignOut = useSignOut()
 
   return (
     <nav className="fixed right-0 bottom-0 left-0 z-50 md:hidden">
       <div className="border-t border-border/60 bg-background/80 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl backdrop-saturate-150">
         <div className="flex items-center justify-around px-2 py-1">
-          {NAV.map(({ href, label, icon: Icon }) => {
+          {navItems.map(({ href, label, icon: Icon }) => {
             const active = pathname === href
             return (
               <Link

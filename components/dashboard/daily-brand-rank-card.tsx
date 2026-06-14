@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl"
 import { Card } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 
@@ -7,8 +8,6 @@ interface DailyBrandRankCardProps {
   mentionsNbr: number
   maxMentions: number
 }
-
-// test
 
 const RANK_ACCENT: Record<number, string> = {
   1: "bg-primary text-primary-foreground ring-primary/30",
@@ -22,6 +21,7 @@ export const DailyBrandRankCard = ({
   mentionsNbr,
   maxMentions,
 }: DailyBrandRankCardProps) => {
+  const t = useTranslations("dashboard")
   const share = maxMentions > 0 ? (mentionsNbr / maxMentions) * 100 : 0
   const accent =
     RANK_ACCENT[rank] ?? "bg-muted text-muted-foreground ring-border"
@@ -53,7 +53,7 @@ export const DailyBrandRankCard = ({
         <span className="font-mono text-base font-semibold tabular-nums">
           {mentionsNbr}
         </span>
-        <span className="text-xs text-muted-foreground">mentions</span>
+        <span className="text-xs text-muted-foreground">{t("mentionsLabel")}</span>
       </div>
     </Card>
   )

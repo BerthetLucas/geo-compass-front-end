@@ -4,12 +4,6 @@ export interface Prompt {
   isActive: boolean
 }
 
-export interface PromptResponse {
-  id: number
-  text: string
-  isActive: boolean
-}
-
 export interface AddPromptRequest {
   text: string
 }

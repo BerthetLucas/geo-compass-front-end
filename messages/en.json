@@ -33,16 +33,21 @@
     "subtitle": "Results for today",
     "leader": "Today's leader",
     "mentions": "{count} mentions",
+    "mentionsLabel": "mentions",
+    "noModelData": "No data for this model.",
     "brandsCited": "Brands cited",
     "acrossPrompts": "across your prompts",
     "global": "Global"
   },
   "historic": {
     "title": "History",
-    "subtitle": "Ranking evolution over the period"
+    "subtitle": "Ranking evolution over the period",
+    "chartTitle": "Historic Rankings",
+    "chartSubtitle": "Results from previous days"
   },
   "prompts": {
     "title": "Prompts",
+    "empty": "No prompts yet. Add one above.",
     "stats": "{activeCount} active · {totalCount} total — queried against every selected model",
     "addPrompt": "Add prompt",
     "active": "active",
