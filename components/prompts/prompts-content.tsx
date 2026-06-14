@@ -6,11 +6,13 @@ import { PromptList } from "./prompt-list"
 import { PromptDialog } from "./prompt-dialog"
 import { useGetPromptListSuspenseQuery } from "@/hooks/queries/useGetPromptList"
 import { useCreatePromptMutation } from "@/hooks/mutation/useCreatePromptMutation"
+import { useTranslations } from "next-intl"
 import type { PromptFormValues } from "./prompt-form/prompt-schema"
 
 export function PromptsContent() {
   const { data: prompts } = useGetPromptListSuspenseQuery()
   const createMutation = useCreatePromptMutation()
+  const t = useTranslations("prompts")
   const [addPromptModalOpen, setAddPromptModalOpen] = useState(false)
 
   const activeCount = prompts.filter((p) => p.isActive).length
@@ -30,8 +32,8 @@ export function PromptsContent() {
       <PromptDialog
         open={addPromptModalOpen}
         onOpenChange={setAddPromptModalOpen}
-        title="Add prompt"
-        submitLabel="Add prompt"
+        title={t("addTitle")}
+        submitLabel={t("addSubmit")}
         onSubmit={handleAdd}
       />
     </section>

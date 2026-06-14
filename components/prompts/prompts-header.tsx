@@ -5,6 +5,7 @@ import { Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { fadeUp } from "@/lib/motion"
 import { useGetPromptListSuspenseQuery } from "@/hooks/queries/useGetPromptList"
+import { useTranslations } from "next-intl"
 
 interface PromptsHeaderProps {
   activeCount: number
@@ -18,6 +19,7 @@ export function PromptsHeader({
   onAddPromptClick,
 }: PromptsHeaderProps) {
   const { data: prompts } = useGetPromptListSuspenseQuery()
+  const t = useTranslations("prompts")
   const MAX_PROMPTS = 5
 
   const isLimitReach = prompts.length >= MAX_PROMPTS
@@ -30,16 +32,15 @@ export function PromptsHeader({
       animate="visible"
     >
       <div className="flex flex-col gap-1">
-        <h1 className="text-2xl font-semibold tracking-tight">Prompts</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">{t("title")}</h1>
         <p className="text-sm text-muted-foreground">
-          {activeCount} active · {totalCount} total — queried against every
-          selected model
+          {t("stats", { activeCount, totalCount })}
         </p>
       </div>
       {!isLimitReach && (
         <Button size="sm" onClick={onAddPromptClick}>
           <Plus className="size-4" />
-          Add prompt
+          {t("addPrompt")}
         </Button>
       )}
     </motion.div>
