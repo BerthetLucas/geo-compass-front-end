@@ -8,21 +8,24 @@ const intlMiddleware = createMiddleware(routing)
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // Skip auth check for locale-prefixed login pages and public assets
-  const isLoginPage =
+  // Skip auth check for auth pages
+  const isPublicAuthPage =
     pathname === "/login" ||
     pathname === "/en/login" ||
-    pathname === "/fr/login"
+    pathname === "/fr/login" ||
+    pathname === "/register" ||
+    pathname === "/en/register" ||
+    pathname === "/fr/register"
 
   const token = request.cookies.get("token")?.value
 
-  if (!token && !isLoginPage) {
+  if (!token && !isPublicAuthPage) {
     // Redirect to locale-aware login
     const locale = pathname.startsWith("/fr") ? "fr" : "en"
     return NextResponse.redirect(new URL(`/${locale}/login`, request.url))
   }
 
-  if (token && isLoginPage) {
+  if (token && isPublicAuthPage) {
     const locale = pathname.startsWith("/fr") ? "fr" : "en"
     return NextResponse.redirect(new URL(`/${locale}`, request.url))
   }
