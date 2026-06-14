@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { AuthForm } from "@/components/auth/auth-form/auth-form"
 
 export default function LoginPage() {
@@ -16,8 +17,14 @@ export default function LoginPage() {
             Sign in to access your AI brand rankings dashboard.
           </p>
         </div>
-        <div className="w-full max-w-sm">
+        <div className="w-full max-w-sm flex flex-col gap-3">
           <AuthForm />
+          <p className="text-center text-sm text-muted-foreground">
+            Don&apos;t have an account?{" "}
+            <Link href="/register" className="text-primary underline underline-offset-4">
+              Create one
+            </Link>
+          </p>
         </div>
       </div>
       <div className="relative hidden h-full overflow-hidden opacity-50 lg:block">
