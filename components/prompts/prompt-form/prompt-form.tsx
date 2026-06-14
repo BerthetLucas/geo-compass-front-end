@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Field, FieldError, FieldLabel } from "@/components/ui/field"
-
+import { useTranslations } from "next-intl"
 import { usePromptForm } from "./use-prompt-form"
 import type { PromptFormValues } from "./prompt-schema"
 
@@ -19,11 +19,11 @@ export function PromptForm({
   onSubmit,
   onCancel,
   defaultValues,
-  submitLabel = "Add",
+  submitLabel,
   isSubmitting = false,
 }: PromptFormProps) {
-  const { register, formState, reset, handleSubmit } =
-    usePromptForm(defaultValues)
+  const t = useTranslations("prompts")
+  const { register, formState, reset, handleSubmit } = usePromptForm(defaultValues)
 
   const handlePromptSubmit = handleSubmit((values) => {
     onSubmit(values)
@@ -33,10 +33,10 @@ export function PromptForm({
   return (
     <form onSubmit={handlePromptSubmit} className="flex flex-col gap-4">
       <Field>
-        <FieldLabel htmlFor="prompt-text">Prompt</FieldLabel>
+        <FieldLabel htmlFor="prompt-text">{t("form.label")}</FieldLabel>
         <Input
           id="prompt-text"
-          placeholder="What are the best running shoes for marathon training?"
+          placeholder={t("form.placeholder")}
           autoFocus
           {...register("text")}
         />
@@ -45,7 +45,7 @@ export function PromptForm({
       <div className="flex justify-end gap-2">
         {onCancel && (
           <Button type="button" variant="ghost" size="sm" onClick={onCancel}>
-            Cancel
+            {t("cancel")}
           </Button>
         )}
         <Button
@@ -53,7 +53,7 @@ export function PromptForm({
           size="sm"
           disabled={isSubmitting || formState.isSubmitting}
         >
-          {submitLabel}
+          {submitLabel ?? t("addPrompt")}
         </Button>
       </div>
     </form>

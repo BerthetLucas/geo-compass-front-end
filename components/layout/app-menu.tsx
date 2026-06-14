@@ -7,8 +7,8 @@ import {
   Hexagon,
   LogOut,
 } from "lucide-react"
-import { usePathname, useRouter } from "next/navigation"
-import Link from "next/link"
+import { usePathname, useRouter, Link } from "@/lib/navigation"
+import { useTranslations } from "next-intl"
 import {
   Sidebar,
   SidebarContent,
@@ -21,16 +21,19 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { signOut } from "@/services/auth"
-
-const NAV = [
-  { href: "/", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/historic", label: "History", icon: LineChart },
-  { href: "/prompts", label: "Prompts", icon: MessageSquare },
-]
+import { LocaleSwitcher } from "@/components/layout/locale-switcher"
 
 export const AppMenu = () => {
   const pathname = usePathname()
   const router = useRouter()
+  const t = useTranslations("nav")
+  const tAuth = useTranslations("auth")
+
+  const NAV = [
+    { href: "/", label: t("dashboard"), icon: LayoutDashboard },
+    { href: "/historic", label: t("history"), icon: LineChart },
+    { href: "/prompts", label: t("prompts"), icon: MessageSquare },
+  ]
 
   const handleSignOut = () => {
     signOut()
@@ -66,10 +69,13 @@ export const AppMenu = () => {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton onClick={handleSignOut}>
-              <LogOut size={18} />
-              <span>Sign out</span>
-            </SidebarMenuButton>
+            <div className="flex items-center justify-between px-2 py-1">
+              <SidebarMenuButton onClick={handleSignOut} className="flex-1">
+                <LogOut size={18} />
+                <span>{tAuth("signOut")}</span>
+              </SidebarMenuButton>
+              <LocaleSwitcher />
+            </div>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>

@@ -1,0 +1,65 @@
+{
+  "auth": {
+    "login": {
+      "title": "Bienvenue",
+      "subtitle": "Connectez-vous pour accéder à votre tableau de bord de classement de marques IA.",
+      "noAccount": "Vous n'avez pas de compte ?",
+      "createOne": "Créer un compte",
+      "error": "Erreur de connexion"
+    },
+    "register": {
+      "title": "Créer un compte",
+      "subtitle": "Inscrivez-vous pour accéder à votre tableau de bord de classement de marques IA.",
+      "hasAccount": "Vous avez déjà un compte ?",
+      "signIn": "Se connecter",
+      "error": "Erreur de création de compte"
+    },
+    "form": {
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "login": "Connexion",
+      "createAccount": "Créer un compte"
+    },
+    "signOut": "Déconnexion"
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "history": "Historique",
+    "prompts": "Prompts"
+  },
+  "dashboard": {
+    "title": "Classements",
+    "subtitle": "Résultats du jour",
+    "leader": "Leader du jour",
+    "mentions": "{count} mentions",
+    "brandsCited": "Marques citées",
+    "acrossPrompts": "sur vos prompts",
+    "global": "Global"
+  },
+  "historic": {
+    "title": "Historique",
+    "subtitle": "Évolution du classement sur la période"
+  },
+  "prompts": {
+    "title": "Prompts",
+    "stats": "{activeCount} actif · {totalCount} total — interrogé sur chaque modèle sélectionné",
+    "addPrompt": "Ajouter un prompt",
+    "active": "actif",
+    "inactive": "inactif",
+    "setInactive": "Désactiver",
+    "setActive": "Activer",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "editTitle": "Modifier le prompt",
+    "addTitle": "Ajouter un prompt",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "addSubmit": "Ajouter un prompt",
+    "actions": "Actions du prompt",
+    "form": {
+      "label": "Prompt",
+      "placeholder": "Quelles sont les meilleures chaussures de running pour un marathon ?"
+    }
+  }
+}

@@ -1,7 +1,10 @@
+"use client"
+
 import { Crown, Boxes } from "lucide-react"
 import { motion } from "motion/react"
 import { Card } from "@/components/ui/card"
 import { fadeUp } from "@/lib/motion"
+import { useTranslations } from "next-intl"
 import type { BrandRanking } from "@/types/ranking"
 
 interface DashboardSummaryProps {
@@ -11,19 +14,20 @@ interface DashboardSummaryProps {
 const STAT_ICON = "size-4 text-primary"
 
 export const DashboardSummary = ({ rankings }: DashboardSummaryProps) => {
+  const t = useTranslations("dashboard")
   const leader = rankings.find((r) => r.rank === 1) ?? rankings[0]
 
   const stats = [
     {
-      label: "Today's leader",
+      label: t("leader"),
       value: leader?.brand ?? "—",
-      hint: leader ? `${leader.mentions} mentions` : undefined,
+      hint: leader ? t("mentions", { count: leader.mentions }) : undefined,
       icon: Crown,
     },
     {
-      label: "Brands cited",
+      label: t("brandsCited"),
       value: rankings.length.toString(),
-      hint: "across your prompts",
+      hint: t("acrossPrompts"),
       icon: Boxes,
     },
   ]

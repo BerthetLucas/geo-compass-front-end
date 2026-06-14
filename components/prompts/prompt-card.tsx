@@ -16,6 +16,7 @@ import { cn } from "@/lib/utils"
 import { useUpdatePromptMutation } from "@/hooks/mutation/useUpdatePromptMutation"
 import { useDeletePromptMutation } from "@/hooks/mutation/useDeletePromptMutation"
 import { PromptDialog } from "./prompt-dialog"
+import { useTranslations } from "next-intl"
 import type { Prompt } from "@/types/prompt"
 
 interface PromptCardProps {
@@ -26,6 +27,7 @@ export function PromptCard({ prompt }: PromptCardProps) {
   const [editOpen, setEditOpen] = useState(false)
   const updateMutation = useUpdatePromptMutation()
   const deleteMutation = useDeletePromptMutation()
+  const t = useTranslations("prompts")
   const { id, isActive, text } = prompt
 
   const cardClassName = cn(
@@ -37,18 +39,13 @@ export function PromptCard({ prompt }: PromptCardProps) {
     isActive ? "bg-emerald-400" : "bg-muted-foreground"
   )
   const badgeVariant = isActive ? "default" : "secondary"
-  const badgeLabel = isActive ? "active" : "inactive"
-  const toggleLabel = isActive ? "Set inactive" : "Set active"
 
   const handleToggle = () => {
-    updateMutation.mutate({
-      id,
-      data: { isActive: !isActive },
-    })
+    updateMutation.mutate({ id, data: { isActive: !isActive } })
   }
 
   const handleEdit = (values: { text: string }) => {
-    updateMutation.mutate({ id: id, data: { text: values.text } })
+    updateMutation.mutate({ id, data: { text: values.text } })
   }
 
   const handleDelete = () => {
@@ -60,25 +57,27 @@ export function PromptCard({ prompt }: PromptCardProps) {
       <Card className={cardClassName}>
         <div className="flex items-center gap-2">
           <span className={dotClassName} />
-          <Badge variant={badgeVariant}>{badgeLabel}</Badge>
+          <Badge variant={badgeVariant}>
+            {isActive ? t("active") : t("inactive")}
+          </Badge>
           <div className="ml-auto">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon-sm">
                   <MoreHorizontal className="size-4" />
-                  <span className="sr-only">Prompt actions</span>
+                  <span className="sr-only">{t("actions")}</span>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem onClick={() => setEditOpen(true)}>
-                  Edit
+                  {t("edit")}
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={handleToggle}>
-                  {toggleLabel}
+                  {isActive ? t("setInactive") : t("setActive")}
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem variant="destructive" onClick={handleDelete}>
-                  Delete
+                  {t("delete")}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -90,9 +89,9 @@ export function PromptCard({ prompt }: PromptCardProps) {
       <PromptDialog
         open={editOpen}
         onOpenChange={setEditOpen}
-        title="Edit prompt"
+        title={t("editTitle")}
         defaultValues={{ text }}
-        submitLabel="Save"
+        submitLabel={t("save")}
         onSubmit={handleEdit}
       />
     </>
