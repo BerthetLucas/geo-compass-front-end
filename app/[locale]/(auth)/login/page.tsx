@@ -18,7 +18,7 @@ export default async function LoginPage() {
           </h1>
           <p className="text-sm text-muted-foreground">{t("subtitle")}</p>
         </div>
-        <div className="w-full max-w-sm flex flex-col gap-3">
+        <div className="flex w-full max-w-sm flex-col gap-3">
           <AuthForm />
           <p className="text-center text-sm text-muted-foreground">
             {t("noAccount")}{" "}
@@ -32,14 +32,7 @@ export default async function LoginPage() {
         </div>
       </div>
       <div className="relative hidden h-full overflow-hidden opacity-50 lg:block">
-        <Image
-          src="/login.jpg"
-          alt="GEO Compass"
-          fill
-          unoptimized
-          className="object-cover"
-          priority
-        />
+        <Image src="/login.jpg" alt="" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
       </div>
     </div>
