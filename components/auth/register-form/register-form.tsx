@@ -6,12 +6,14 @@ import { Input } from "@/components/ui/input"
 import { useRegisterMutation } from "@/hooks/mutation/useRegisterMutation"
 import { RegisterFormData } from "./register-form-schema"
 import { useRegisterForm } from "./useRegisterForm"
-import { useRouter } from "next/navigation"
+import { useRouter } from "@/lib/navigation"
+import { Link } from "@/lib/navigation"
+import { useTranslations } from "next-intl"
 import { toast } from "sonner"
-import Link from "next/link"
 
 export function RegisterForm() {
   const router = useRouter()
+  const t = useTranslations("auth")
   const { register, handleSubmit, formState } = useRegisterForm()
   const { mutate: registerUser } = useRegisterMutation()
 
@@ -21,7 +23,7 @@ export function RegisterForm() {
         router.push("/")
       },
       onError: () => {
-        toast.error("Erreur de création de compte")
+        toast.error(t("register.error"))
       },
     })
   }
@@ -32,7 +34,7 @@ export function RegisterForm() {
       onSubmit={handleSubmit(handleRegisterFormSubmit)}
     >
       <Field>
-        <FieldLabel htmlFor="email">Email</FieldLabel>
+        <FieldLabel htmlFor="email">{t("form.email")}</FieldLabel>
         <Input
           id="email"
           type="email"
@@ -42,7 +44,7 @@ export function RegisterForm() {
         <FieldError errors={[formState.errors.email]} />
       </Field>
       <Field>
-        <FieldLabel htmlFor="password">Password</FieldLabel>
+        <FieldLabel htmlFor="password">{t("form.password")}</FieldLabel>
         <Input
           id="password"
           type="password"
@@ -52,7 +54,7 @@ export function RegisterForm() {
         <FieldError errors={[formState.errors.password]} />
       </Field>
       <Field>
-        <FieldLabel htmlFor="confirmPassword">Confirm password</FieldLabel>
+        <FieldLabel htmlFor="confirmPassword">{t("form.confirmPassword")}</FieldLabel>
         <Input
           id="confirmPassword"
           type="password"
@@ -62,12 +64,12 @@ export function RegisterForm() {
         <FieldError errors={[formState.errors.confirmPassword]} />
       </Field>
       <Button type="submit" className="w-full">
-        Create account
+        {t("form.createAccount")}
       </Button>
       <p className="text-center text-sm text-muted-foreground">
-        Already have an account?{" "}
+        {t("register.hasAccount")}{" "}
         <Link href="/login" className="text-primary underline underline-offset-4">
-          Sign in
+          {t("register.signIn")}
         </Link>
       </p>
     </form>

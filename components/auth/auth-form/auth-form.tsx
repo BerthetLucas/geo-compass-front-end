@@ -6,11 +6,13 @@ import { Input } from "@/components/ui/input"
 import { useLoginMutation } from "@/hooks/mutation/useLoginMutation"
 import { LoginFormData } from "./auth-form-schema"
 import { useLoginForm } from "./useLoginForm"
-import { useRouter } from "next/navigation"
+import { useRouter } from "@/lib/navigation"
+import { useTranslations } from "next-intl"
 import { toast } from "sonner"
 
 export function AuthForm() {
   const router = useRouter()
+  const t = useTranslations("auth")
   const { register, handleSubmit, formState } = useLoginForm()
   const { mutate: login } = useLoginMutation()
 
@@ -20,7 +22,7 @@ export function AuthForm() {
         router.push("/")
       },
       onError: () => {
-        toast.error("Erreur de connexion")
+        toast.error(t("login.error"))
       },
     })
   }
@@ -31,7 +33,7 @@ export function AuthForm() {
       onSubmit={handleSubmit(handleLoginFormSubmit)}
     >
       <Field>
-        <FieldLabel htmlFor="email">Email</FieldLabel>
+        <FieldLabel htmlFor="email">{t("form.email")}</FieldLabel>
         <Input
           id="email"
           type="email"
@@ -41,7 +43,7 @@ export function AuthForm() {
         <FieldError errors={[formState.errors.email]} />
       </Field>
       <Field>
-        <FieldLabel htmlFor="password">Password</FieldLabel>
+        <FieldLabel htmlFor="password">{t("form.password")}</FieldLabel>
         <Input
           id="password"
           type="password"
@@ -51,7 +53,7 @@ export function AuthForm() {
         <FieldError errors={[formState.errors.password]} />
       </Field>
       <Button type="submit" className="w-full">
-        Login
+        {t("form.login")}
       </Button>
     </form>
   )
