@@ -1,8 +1,11 @@
 import Image from "next/image"
-import Link from "next/link"
+import { Link } from "@/lib/navigation"
 import { AuthForm } from "@/components/auth/auth-form/auth-form"
+import { getTranslations } from "next-intl/server"
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const t = await getTranslations("auth.login")
+
   return (
     <div className="grid h-screen w-full lg:grid-cols-2">
       <div className="flex flex-col items-center justify-center gap-8 px-8 py-12">
@@ -11,18 +14,19 @@ export default function LoginPage() {
             GEO Compass
           </p>
           <h1 className="font-heading text-3xl font-semibold tracking-tight">
-            Welcome
+            {t("title")}
           </h1>
-          <p className="text-sm text-muted-foreground">
-            Sign in to access your AI brand rankings dashboard.
-          </p>
+          <p className="text-sm text-muted-foreground">{t("subtitle")}</p>
         </div>
         <div className="w-full max-w-sm flex flex-col gap-3">
           <AuthForm />
           <p className="text-center text-sm text-muted-foreground">
-            Don&apos;t have an account?{" "}
-            <Link href="/register" className="text-primary underline underline-offset-4">
-              Create one
+            {t("noAccount")}{" "}
+            <Link
+              href="/register"
+              className="text-primary underline underline-offset-4"
+            >
+              {t("createOne")}
             </Link>
           </p>
         </div>

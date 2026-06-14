@@ -1,7 +1,10 @@
 import Image from "next/image"
 import { RegisterForm } from "@/components/auth/register-form/register-form"
+import { getTranslations } from "next-intl/server"
 
-export default function RegisterPage() {
+export default async function RegisterPage() {
+  const t = await getTranslations("auth.register")
+
   return (
     <div className="grid h-screen w-full lg:grid-cols-2">
       <div className="flex flex-col items-center justify-center gap-8 px-8 py-12">
@@ -10,11 +13,9 @@ export default function RegisterPage() {
             GEO Compass
           </p>
           <h1 className="font-heading text-3xl font-semibold tracking-tight">
-            Create an account
+            {t("title")}
           </h1>
-          <p className="text-sm text-muted-foreground">
-            Sign up to access your AI brand rankings dashboard.
-          </p>
+          <p className="text-sm text-muted-foreground">{t("subtitle")}</p>
         </div>
         <div className="w-full max-w-sm">
           <RegisterForm />
