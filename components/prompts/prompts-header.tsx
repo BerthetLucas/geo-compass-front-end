@@ -18,7 +18,7 @@ export function PromptsHeader({ onAddPromptClick }: PromptsHeaderProps) {
 
   const totalCount = prompts.length
   const activeCount = prompts.filter((p) => p.isActive).length
-  const isLimitReach = totalCount >= MAX_PROMPTS
+  const isLimitReach = activeCount >= MAX_PROMPTS
 
   return (
     <motion.div
