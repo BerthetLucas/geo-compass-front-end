@@ -26,7 +26,8 @@
   "nav": {
     "dashboard": "Tableau de bord",
     "history": "Historique",
-    "prompts": "Prompts"
+    "prompts": "Prompts",
+    "settings": "Paramètres"
   },
   "dashboard": {
     "title": "Classements",

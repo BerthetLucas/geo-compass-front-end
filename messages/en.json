@@ -26,7 +26,8 @@
   "nav": {
     "dashboard": "Dashboard",
     "history": "History",
-    "prompts": "Prompts"
+    "prompts": "Prompts",
+    "settings": "Settings"
   },
   "dashboard": {
     "title": "Rankings",
