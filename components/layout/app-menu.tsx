@@ -48,8 +48,8 @@ export const AppMenu = () => {
                         <div className="absolute inset-y-1 left-0 w-0.5 rounded-full bg-primary" />
                       )}
                       <SidebarMenuButton asChild isActive={isActive}>
-                        <Link href={href} className="group">
-                          <Icon size={18} className="transition-transform duration-150 group-hover:translate-x-0.5" />
+                        <Link href={href}>
+                          <Icon size={18} />
                           <span>{label}</span>
                         </Link>
                       </SidebarMenuButton>
