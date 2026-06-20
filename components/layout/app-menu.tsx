@@ -1,7 +1,6 @@
 "use client"
 
 import { Hexagon, LogOut } from "lucide-react"
-import { motion } from "motion/react"
 import { usePathname, Link } from "@/lib/navigation"
 import { useTranslations } from "next-intl"
 import { useNavItems, useSignOut } from "@/hooks/use-nav"
@@ -49,14 +48,8 @@ export const AppMenu = () => {
                         <div className="absolute inset-y-1 left-0 w-0.5 rounded-full bg-primary" />
                       )}
                       <SidebarMenuButton asChild isActive={isActive}>
-                        <Link href={href} className="pl-3">
-                          <motion.span
-                            whileHover={{ x: 2 }}
-                            transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                            className="flex items-center"
-                          >
-                            <Icon size={18} />
-                          </motion.span>
+                        <Link href={href} className="group">
+                          <Icon size={18} className="transition-transform duration-150 group-hover:translate-x-0.5" />
                           <span>{label}</span>
                         </Link>
                       </SidebarMenuButton>
