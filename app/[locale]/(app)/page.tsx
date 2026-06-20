@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import { RankingTabs } from "@/components/dashboard/ranking-tabs"
 import { DailyRankingListSkeleton } from "@/components/dashboard/daily-ranking-list-skeleton"
+import { NextResultCountdown } from "@/components/dashboard/next-result-countdown"
 import { Badge } from "@/components/ui/badge"
 import { getTranslations, getLocale } from "next-intl/server"
 
@@ -21,6 +22,7 @@ export default async function Page() {
         <div className="mb-5 flex flex-col gap-1">
           <h1 className="text-2xl">{t("title")}</h1>
           <p>{t("subtitle")}</p>
+          <NextResultCountdown />
         </div>
         <Badge variant="outline" className="p-3 capitalize">
           {formattedDate}

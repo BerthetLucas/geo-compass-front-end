@@ -7,6 +7,7 @@ import { ModelRankingList } from "./model-ranking-list"
 import { DailyRankingListSkeleton } from "./daily-ranking-list-skeleton"
 import { useGetAvailableModelsSuspenseQuery } from "@/hooks/queries/useGetAvailableModels"
 import { useTranslations } from "next-intl"
+import { cn } from "@/lib/utils"
 
 export const RankingTabs = () => {
   const { data: models } = useGetAvailableModelsSuspenseQuery()
@@ -18,6 +19,9 @@ export const RankingTabs = () => {
     setTab(value)
     setVisited((prev) => new Set([...prev, value]))
   }
+
+  const tabClass = (value: string) =>
+    cn("animate-in duration-150 fade-in", tab !== value && "hidden")
 
   const triggerClass =
     "rounded-none border-b-2 border-transparent pb-3 font-medium data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:shadow-none"
@@ -34,24 +38,20 @@ export const RankingTabs = () => {
           </TabsTrigger>
         ))}
       </TabsList>
-
-      <div className={tab !== "global" ? "hidden" : "animate-in fade-in duration-150"}>
+      <div className={tabClass("global")}>
         <Suspense fallback={<DailyRankingListSkeleton />}>
           <DailyRankingList />
         </Suspense>
       </div>
-
-      {models.map((model) =>
-        visited.has(model) ? (
-          <div
-            key={model}
-            className={tab !== model ? "hidden" : "animate-in fade-in duration-150"}
-          >
-            <Suspense fallback={<DailyRankingListSkeleton />}>
-              <ModelRankingList model={model} />
-            </Suspense>
-          </div>
-        ) : null
+      {models.map(
+        (model) =>
+          visited.has(model) && (
+            <div key={model} className={tabClass(model)}>
+              <Suspense fallback={<DailyRankingListSkeleton />}>
+                <ModelRankingList model={model} />
+              </Suspense>
+            </div>
+          )
       )}
     </Tabs>
   )
