@@ -39,7 +39,8 @@
     "brandsCited": "Marques citées",
     "acrossPrompts": "sur vos prompts",
     "global": "Global",
-    "nextResult": "Prochain résultat dans"
+    "nextResult": "Prochain résultat dans",
+    "addPrompt": "Pour commencer, ajoutez un prompt dans la section dédiée."
   },
   "historic": {
     "title": "Historique",
