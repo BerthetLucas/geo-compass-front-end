@@ -16,12 +16,6 @@ export const stagger = {
   visible: { transition: { staggerChildren: 0.06 } },
 }
 
-export const tabFade = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1, transition: { duration: 0.15, ease: EASE_SNAPPY } },
-  exit: { opacity: 0, transition: { duration: 0.1, ease: EASE_IN } },
-}
-
 export const cardHoverSpring = {
   type: "spring" as const,
   stiffness: 300,
