@@ -46,6 +46,21 @@
     "chartTitle": "Historic Rankings",
     "chartSubtitle": "Results from previous days"
   },
+  "settings": {
+    "title": "Settings",
+    "save": "Save",
+    "saveSuccess": "Settings saved.",
+    "emailNotifications": {
+      "label": "Email notifications",
+      "description": "Receive email notifications about your ranking results."
+    },
+    "openRouterApiKey": {
+      "label": "OpenRouter API key",
+      "placeholder": "sk-or-...",
+      "active": "Key active",
+      "delete": "Delete key"
+    }
+  },
   "prompts": {
     "title": "Prompts",
     "empty": "No prompts yet. Add one above.",

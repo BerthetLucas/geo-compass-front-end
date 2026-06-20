@@ -1,4 +1,7 @@
 export const queryKeys = {
+  user: {
+    settings: ["user-settings"] as const,
+  },
   prompts: {
     all: ["prompts"] as const,
   },
