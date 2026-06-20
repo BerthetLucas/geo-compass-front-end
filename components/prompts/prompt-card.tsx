@@ -55,7 +55,7 @@ export function PromptCard({ prompt }: PromptCardProps) {
       <motion.div
         whileHover={{ y: -2 }}
         transition={cardHoverSpring}
-        className={cn(!isActive && "opacity-60")}
+        className={cn("transition-opacity duration-200", !isActive && "opacity-60")}
       >
         <Card
           className="flex flex-col gap-3 px-4 py-3"
