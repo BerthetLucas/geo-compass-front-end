@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { MoreHorizontal } from "lucide-react"
+import { motion } from "motion/react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -18,6 +19,7 @@ import { useDeletePromptMutation } from "@/hooks/mutation/useDeletePromptMutatio
 import { PromptDialog } from "./prompt-dialog"
 import { useTranslations } from "next-intl"
 import type { Prompt } from "@/types/prompt"
+import { cardHoverSpring } from "@/lib/motion"
 
 interface PromptCardProps {
   prompt: Prompt
@@ -30,13 +32,9 @@ export function PromptCard({ prompt }: PromptCardProps) {
   const t = useTranslations("prompts")
   const { id, isActive, text } = prompt
 
-  const cardClassName = cn(
-    "flex flex-col gap-3 px-4 py-3 transition-opacity",
-    !isActive && "opacity-60"
-  )
   const dotClassName = cn(
     "size-2 shrink-0 rounded-full",
-    isActive ? "bg-emerald-400" : "bg-muted-foreground"
+    isActive ? "bg-primary" : "bg-muted-foreground"
   )
   const badgeVariant = isActive ? "default" : "secondary"
 
@@ -54,37 +52,52 @@ export function PromptCard({ prompt }: PromptCardProps) {
 
   return (
     <>
-      <Card className={cardClassName}>
-        <div className="flex items-center gap-2">
-          <span className={dotClassName} />
-          <Badge variant={badgeVariant}>
-            {isActive ? t("active") : t("inactive")}
-          </Badge>
-          <div className="ml-auto">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon-sm">
-                  <MoreHorizontal className="size-4" />
-                  <span className="sr-only">{t("actions")}</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setEditOpen(true)}>
-                  {t("edit")}
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={handleToggle}>
-                  {isActive ? t("setInactive") : t("setActive")}
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem variant="destructive" onClick={handleDelete}>
-                  {t("delete")}
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+      <motion.div
+        whileHover={{ y: -2 }}
+        transition={cardHoverSpring}
+        className={cn(!isActive && "opacity-60")}
+      >
+        <Card
+          className="flex flex-col gap-3 px-4 py-3"
+          style={{ boxShadow: "var(--shadow-card)" }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.boxShadow = "var(--shadow-card-hover)"
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.boxShadow = "var(--shadow-card)"
+          }}
+        >
+          <div className="flex items-center gap-2">
+            <span className={dotClassName} />
+            <Badge variant={badgeVariant}>
+              {isActive ? t("active") : t("inactive")}
+            </Badge>
+            <div className="ml-auto">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="icon-sm">
+                    <MoreHorizontal className="size-4" />
+                    <span className="sr-only">{t("actions")}</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={() => setEditOpen(true)}>
+                    {t("edit")}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={handleToggle}>
+                    {isActive ? t("setInactive") : t("setActive")}
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem variant="destructive" onClick={handleDelete}>
+                    {t("delete")}
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           </div>
-        </div>
-        <p className="text-sm leading-relaxed">{text}</p>
-      </Card>
+          <p className="text-sm leading-relaxed">{text}</p>
+        </Card>
+      </motion.div>
 
       <PromptDialog
         open={editOpen}
