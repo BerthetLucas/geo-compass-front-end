@@ -38,7 +38,8 @@
     "noModelData": "Aucune donnée pour ce modèle.",
     "brandsCited": "Marques citées",
     "acrossPrompts": "sur vos prompts",
-    "global": "Global"
+    "global": "Global",
+    "nextResult": "Prochain résultat dans"
   },
   "historic": {
     "title": "Historique",
@@ -63,6 +64,7 @@
   },
   "prompts": {
     "title": "Prompts",
+    "description": "Créez vos prompts ci-dessous. Chaque jour, ils sont soumis automatiquement à chaque modèle IA et les résultats sont mis à jour.",
     "empty": "Aucun prompt pour le moment. Ajoutez-en un ci-dessus.",
     "stats": "{activeCount} actif · {totalCount} total — interrogé sur chaque modèle sélectionné",
     "addPrompt": "Ajouter un prompt",
