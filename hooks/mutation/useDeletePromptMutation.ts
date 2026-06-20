@@ -5,7 +5,7 @@ import { queryKeys } from "@/hooks/query-keys"
 export function useDeletePromptMutation() {
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: (id: number) => deletePrompt({ id }),
+    mutationFn: deletePrompt,
     onSuccess: () => queryClient.invalidateQueries({ queryKey: queryKeys.prompts.all }),
   })
 }

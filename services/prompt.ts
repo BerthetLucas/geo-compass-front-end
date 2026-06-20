@@ -1,10 +1,5 @@
 import apiClient from "@/lib/api"
-import {
-  AddPromptRequest,
-  DeletePromptRequest,
-  Prompt,
-  UpdatePromptRequest,
-} from "@/types/prompt"
+import { AddPromptRequest, Prompt, UpdatePromptRequest } from "@/types/prompt"
 
 export async function getAllPrompts(): Promise<Prompt[]> {
   const response = await apiClient.get("/prompt")
@@ -22,6 +17,6 @@ export async function updatePrompt(
   await apiClient.put(`/prompt/${id}`, data)
 }
 
-export async function deletePrompt({ id }: DeletePromptRequest): Promise<void> {
+export async function deletePrompt(id: number): Promise<void> {
   await apiClient.post("/prompt/delete", { id })
 }
