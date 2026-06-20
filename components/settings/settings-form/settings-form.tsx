@@ -15,6 +15,7 @@ interface SettingsFormProps {
   onSubmit: (values: SettingsFormValues) => void
   onDeleteApiKey: () => void
   isSubmitting?: boolean
+  isDemo?: boolean
 }
 
 export function SettingsForm({
@@ -22,6 +23,7 @@ export function SettingsForm({
   onSubmit,
   onDeleteApiKey,
   isSubmitting = false,
+  isDemo = false,
 }: SettingsFormProps) {
   const t = useTranslations("settings")
 
@@ -41,6 +43,7 @@ export function SettingsForm({
               type="checkbox"
               className="h-4 w-4 cursor-pointer rounded border-border accent-primary"
               {...register("emailNotifications")}
+              disabled={isDemo}
             />
             <Label htmlFor="email-notifications">
               {t("emailNotifications.label")}
@@ -56,14 +59,17 @@ export function SettingsForm({
             hasOpenRouterApiKey={settings.hasOpenRouterApiKey}
             onDeleteApiKey={onDeleteApiKey}
             isSubmitting={isSubmitting}
+            isDemo={isDemo}
           />
         </Field>
 
-        <div className="flex justify-end">
-          <Button type="submit" size="sm" disabled={isSubmitting}>
-            {t("save")}
-          </Button>
-        </div>
+        {!isDemo && (
+          <div className="flex justify-end">
+            <Button type="submit" size="sm" disabled={isSubmitting}>
+              {t("save")}
+            </Button>
+          </div>
+        )}
       </form>
     </FormProvider>
   )

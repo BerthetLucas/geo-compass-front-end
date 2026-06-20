@@ -30,6 +30,7 @@ apiClient.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401 && typeof window !== "undefined") {
       Cookies.remove("token")
+      Cookies.remove("demo_mode")
     }
     return Promise.reject(error)
   }
