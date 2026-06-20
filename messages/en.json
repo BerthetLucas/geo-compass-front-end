@@ -26,7 +26,8 @@
   "nav": {
     "dashboard": "Dashboard",
     "history": "History",
-    "prompts": "Prompts"
+    "prompts": "Prompts",
+    "settings": "Settings"
   },
   "dashboard": {
     "title": "Rankings",
@@ -44,6 +45,21 @@
     "subtitle": "Ranking evolution over the period",
     "chartTitle": "Historic Rankings",
     "chartSubtitle": "Results from previous days"
+  },
+  "settings": {
+    "title": "Settings",
+    "save": "Save",
+    "saveSuccess": "Settings saved.",
+    "emailNotifications": {
+      "label": "Email notifications",
+      "description": "Receive email notifications about your ranking results."
+    },
+    "openRouterApiKey": {
+      "label": "OpenRouter API key",
+      "placeholder": "sk-or-...",
+      "active": "Key active",
+      "delete": "Delete key"
+    }
   },
   "prompts": {
     "title": "Prompts",

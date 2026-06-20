@@ -26,7 +26,8 @@
   "nav": {
     "dashboard": "Tableau de bord",
     "history": "Historique",
-    "prompts": "Prompts"
+    "prompts": "Prompts",
+    "settings": "Paramètres"
   },
   "dashboard": {
     "title": "Classements",
@@ -44,6 +45,21 @@
     "subtitle": "Évolution du classement sur la période",
     "chartTitle": "Classements historiques",
     "chartSubtitle": "Résultats des jours précédents"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "save": "Enregistrer",
+    "saveSuccess": "Paramètres enregistrés.",
+    "emailNotifications": {
+      "label": "Notifications par e-mail",
+      "description": "Recevoir des notifications par e-mail sur vos résultats de classement."
+    },
+    "openRouterApiKey": {
+      "label": "Clef API OpenRouter",
+      "placeholder": "sk-or-...",
+      "active": "Clef active",
+      "delete": "Supprimer la clef"
+    }
   },
   "prompts": {
     "title": "Prompts",
