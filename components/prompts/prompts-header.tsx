@@ -10,9 +10,13 @@ import { MAX_PROMPTS } from "@/config/config"
 
 interface PromptsHeaderProps {
   onAddPromptClick: () => void
+  isDemo?: boolean
 }
 
-export function PromptsHeader({ onAddPromptClick }: PromptsHeaderProps) {
+export function PromptsHeader({
+  onAddPromptClick,
+  isDemo,
+}: PromptsHeaderProps) {
   const { data: prompts } = useGetPromptListSuspenseQuery()
   const t = useTranslations("prompts")
 
@@ -33,7 +37,7 @@ export function PromptsHeader({ onAddPromptClick }: PromptsHeaderProps) {
           {t("stats", { activeCount, totalCount })}
         </p>
       </div>
-      {!isLimitReach && (
+      {!isDemo && !isLimitReach && (
         <Button size="sm" onClick={onAddPromptClick}>
           <Plus className="size-4" />
           {t("addPrompt")}
