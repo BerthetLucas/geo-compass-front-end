@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { Info } from "lucide-react"
 import { PromptsHeader } from "./prompts-header"
 import { PromptList } from "./prompt-list"
 import { PromptDialog } from "./prompt-dialog"
@@ -8,6 +9,7 @@ import { useCreatePromptMutation } from "@/hooks/mutation/useCreatePromptMutatio
 import { useTranslations } from "next-intl"
 import type { PromptFormValues } from "./prompt-form/prompt-schema"
 import { isDemoMode } from "@/lib/demo"
+import { Card } from "@/components/ui/card"
 
 export function PromptsContent() {
   const createMutation = useCreatePromptMutation()
@@ -34,6 +36,15 @@ export function PromptsContent() {
           submitLabel={t("addSubmit")}
           onSubmit={handleAdd}
         />
+      )}
+      {isDemo && (
+        <Card className="flex flex-row items-start gap-3 border-destructive/20 bg-destructive/5 px-4 py-4 text-sm text-muted-foreground">
+          <Info className="mt-0.5 size-4 shrink-0 text-destructive" />
+          <p>
+            En mode démo, les prompts sont en lecture seule et ne peuvent pas
+            être modifiés.
+          </p>
+        </Card>
       )}
     </section>
   )
