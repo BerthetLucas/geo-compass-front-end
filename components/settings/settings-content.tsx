@@ -6,13 +6,16 @@ import { SettingsForm } from "./settings-form/settings-form"
 import type { SettingsFormValues } from "./settings-form/settings-schema"
 import { useTranslations } from "next-intl"
 import { toast } from "sonner"
+import { isDemoMode } from "@/lib/demo"
 
 export function SettingsContent() {
   const t = useTranslations("settings")
+  const isDemo = isDemoMode()
   const { data: settings } = useGetUserSettingsSuspenseQuery()
   const { mutate, isPending } = useUpdateUserSettingsMutation()
 
   function handleSubmit(values: SettingsFormValues) {
+    if (isDemo) return
     mutate(
       {
         emailNotifications: values.emailNotifications,
@@ -25,6 +28,7 @@ export function SettingsContent() {
   }
 
   function handleDeleteApiKey() {
+    if (isDemo) return
     mutate(
       { openRouterApiKey: null },
       { onSuccess: () => toast.success(t("saveSuccess")) }
@@ -42,6 +46,7 @@ export function SettingsContent() {
         onSubmit={handleSubmit}
         onDeleteApiKey={handleDeleteApiKey}
         isSubmitting={isPending}
+        isDemo={isDemo}
       />
     </section>
   )

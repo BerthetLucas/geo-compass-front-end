@@ -10,12 +10,14 @@ interface SettingsApiKeyLabelProps {
   hasOpenRouterApiKey: boolean
   onDeleteApiKey: () => void
   isSubmitting?: boolean
+  isDemo?: boolean
 }
 
 export const SettingsApiKeyLabel = ({
   hasOpenRouterApiKey,
   onDeleteApiKey,
   isSubmitting = false,
+  isDemo = false,
 }: SettingsApiKeyLabelProps) => {
   const { register, formState } = useFormContext<SettingsFormValues>()
   const t = useTranslations("settings")
@@ -24,15 +26,17 @@ export const SettingsApiKeyLabel = ({
     return (
       <div className="flex items-center gap-3">
         <Badge variant="secondary">{t("openRouterApiKey.active")}</Badge>
-        <Button
-          type="button"
-          variant="ghost"
-          size="sm"
-          onClick={onDeleteApiKey}
-          disabled={isSubmitting}
-        >
-          {t("openRouterApiKey.delete")}
-        </Button>
+        {!isDemo && (
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={onDeleteApiKey}
+            disabled={isSubmitting}
+          >
+            {t("openRouterApiKey.delete")}
+          </Button>
+        )}
       </div>
     )
   }
@@ -44,6 +48,7 @@ export const SettingsApiKeyLabel = ({
         type="password"
         placeholder={t("openRouterApiKey.placeholder")}
         {...register("openRouterApiKey")}
+        disabled={isDemo}
       />
       <FieldError errors={[formState.errors.openRouterApiKey]} />
     </>

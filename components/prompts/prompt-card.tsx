@@ -20,6 +20,7 @@ import { PromptDialog } from "./prompt-dialog"
 import { useTranslations } from "next-intl"
 import type { Prompt } from "@/types/prompt"
 import { cardHoverSpring } from "@/lib/motion"
+import { isDemoMode } from "@/lib/demo"
 
 interface PromptCardProps {
   prompt: Prompt
@@ -30,6 +31,7 @@ export function PromptCard({ prompt }: PromptCardProps) {
   const updateMutation = useUpdatePromptMutation()
   const deleteMutation = useDeletePromptMutation()
   const t = useTranslations("prompts")
+  const isDemo = isDemoMode()
   const { id, isActive, text } = prompt
 
   const dotClassName = cn(
@@ -55,7 +57,10 @@ export function PromptCard({ prompt }: PromptCardProps) {
       <motion.div
         whileHover={{ y: -2 }}
         transition={cardHoverSpring}
-        className={cn("transition-opacity duration-200", !isActive && "opacity-60")}
+        className={cn(
+          "transition-opacity duration-200",
+          !isActive && "opacity-60"
+        )}
       >
         <Card
           className="flex flex-col gap-3 px-4 py-3"
@@ -72,41 +77,48 @@ export function PromptCard({ prompt }: PromptCardProps) {
             <Badge variant={badgeVariant}>
               {isActive ? t("active") : t("inactive")}
             </Badge>
-            <div className="ml-auto">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon-sm">
-                    <MoreHorizontal className="size-4" />
-                    <span className="sr-only">{t("actions")}</span>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem onClick={() => setEditOpen(true)}>
-                    {t("edit")}
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={handleToggle}>
-                    {isActive ? t("setInactive") : t("setActive")}
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem variant="destructive" onClick={handleDelete}>
-                    {t("delete")}
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+            {!isDemo && (
+              <div className="ml-auto">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon-sm">
+                      <MoreHorizontal className="size-4" />
+                      <span className="sr-only">{t("actions")}</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem onClick={() => setEditOpen(true)}>
+                      {t("edit")}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={handleToggle}>
+                      {isActive ? t("setInactive") : t("setActive")}
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem
+                      variant="destructive"
+                      onClick={handleDelete}
+                    >
+                      {t("delete")}
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            )}
           </div>
           <p className="text-sm leading-relaxed">{text}</p>
         </Card>
       </motion.div>
 
-      <PromptDialog
-        open={editOpen}
-        onOpenChange={setEditOpen}
-        title={t("editTitle")}
-        defaultValues={{ text }}
-        submitLabel={t("save")}
-        onSubmit={handleEdit}
-      />
+      {!isDemo && (
+        <PromptDialog
+          open={editOpen}
+          onOpenChange={setEditOpen}
+          title={t("editTitle")}
+          defaultValues={{ text }}
+          submitLabel={t("save")}
+          onSubmit={handleEdit}
+        />
+      )}
     </>
   )
 }

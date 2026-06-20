@@ -10,15 +10,19 @@ import { MAX_PROMPTS } from "@/config/config"
 
 interface PromptsHeaderProps {
   onAddPromptClick: () => void
+  isDemo?: boolean
 }
 
-export function PromptsHeader({ onAddPromptClick }: PromptsHeaderProps) {
+export function PromptsHeader({
+  onAddPromptClick,
+  isDemo,
+}: PromptsHeaderProps) {
   const { data: prompts } = useGetPromptListSuspenseQuery()
   const t = useTranslations("prompts")
 
   const totalCount = prompts.length
   const activeCount = prompts.filter((p) => p.isActive).length
-  const isLimitReach = activeCount >= MAX_PROMPTS
+  const isLimitReachOrDemo = isDemo || activeCount >= MAX_PROMPTS
 
   return (
     <motion.div
@@ -33,7 +37,7 @@ export function PromptsHeader({ onAddPromptClick }: PromptsHeaderProps) {
           {t("stats", { activeCount, totalCount })}
         </p>
       </div>
-      {!isLimitReach && (
+      {!isLimitReachOrDemo && (
         <Button size="sm" onClick={onAddPromptClick}>
           <Plus className="size-4" />
           {t("addPrompt")}

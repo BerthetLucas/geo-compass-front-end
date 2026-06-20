@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { Link } from "@/lib/navigation"
 import { AuthForm } from "@/components/auth/auth-form/auth-form"
+import { DemoLoginButton } from "@/components/auth/demo-login-button"
 import { getTranslations } from "next-intl/server"
 
 export default async function LoginPage() {
@@ -20,6 +21,12 @@ export default async function LoginPage() {
         </div>
         <div className="flex w-full max-w-sm flex-col gap-3">
           <AuthForm />
+          <div className="relative flex items-center gap-3 py-1">
+            <div className="h-px flex-1 bg-border" />
+            <span className="text-xs text-muted-foreground">ou</span>
+            <div className="h-px flex-1 bg-border" />
+          </div>
+          <DemoLoginButton />
           <p className="text-center text-sm text-muted-foreground">
             {t("noAccount")}{" "}
             <Link
