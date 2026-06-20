@@ -30,7 +30,8 @@ export function RegisterForm() {
 
   return (
     <form
-      className="flex w-full flex-col gap-4 rounded-md border bg-background p-6 shadow"
+      className="flex w-full flex-col gap-4 rounded-xl border bg-card p-6"
+      style={{ boxShadow: "var(--shadow-card)" }}
       onSubmit={handleSubmit(handleRegisterFormSubmit)}
     >
       <Field>
@@ -63,7 +64,7 @@ export function RegisterForm() {
         />
         <FieldError errors={[formState.errors.confirmPassword]} />
       </Field>
-      <Button type="submit" className="w-full">
+      <Button type="submit" className="w-full hover:brightness-110">
         {t("form.createAccount")}
       </Button>
       <p className="text-center text-sm text-muted-foreground">
