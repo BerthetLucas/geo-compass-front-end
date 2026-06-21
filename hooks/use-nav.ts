@@ -6,6 +6,7 @@ import {
 } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useRouter } from "@/lib/navigation"
+import { useQueryClient } from "@tanstack/react-query"
 import { signOut } from "@/services/auth"
 
 export function useNavItems() {
@@ -20,8 +21,10 @@ export function useNavItems() {
 
 export function useSignOut() {
   const router = useRouter()
+  const queryClient = useQueryClient()
   return () => {
     signOut()
+    queryClient.clear()
     router.push("/login")
   }
 }

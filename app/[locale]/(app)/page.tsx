@@ -22,7 +22,9 @@ export default async function Page() {
         <div className="mb-5 flex flex-col gap-1">
           <h1 className="text-2xl">{t("title")}</h1>
           <p>{t("subtitle")}</p>
-          <NextResultCountdown />
+          <Suspense>
+            <NextResultCountdown />
+          </Suspense>
         </div>
         <Badge variant="outline" className="p-3 capitalize">
           {formattedDate}
