@@ -7,6 +7,7 @@ import { useGetDailyRankingSuspenseQuery } from "@/hooks/queries/useGetDailyRank
 import { useRunManualGeneration } from "@/hooks/mutation/useRunManualGeneration"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { isDemoMode } from "@/lib/demo"
 
 export function NextResultCountdown() {
   const t = useTranslations("dashboard")
@@ -24,7 +25,7 @@ export function NextResultCountdown() {
       </Card>
     )
 
-  if (hasActivePrompts && rankings.length === 0)
+  if (hasActivePrompts && rankings.length === 0 && !isDemoMode())
     return (
       <Card className="mt-4 flex flex-row items-center gap-3 p-4">
         <Info className="mt-0.5 size-4 shrink-0" />
