@@ -40,7 +40,10 @@
     "acrossPrompts": "sur vos prompts",
     "global": "Global",
     "nextResult": "Les résultats sont mis à jour tout les jours à 2H00",
-    "addPrompt": "Pour commencer, ajoutez un prompt dans la section dédiée."
+    "addPrompt": "Pour commencer, ajoutez un prompt dans la section dédiée.",
+    "generateData": "Générer les données du jour",
+    "generating": "Génération en cours...",
+    "generateDescription": "Aucune donnée pour aujourd'hui."
   },
   "historic": {
     "title": "Historique",

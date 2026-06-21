@@ -40,7 +40,10 @@
     "acrossPrompts": "across your prompts",
     "global": "Global",
     "nextResult": "Results are upated every day at 2AM",
-    "addPrompt": "To get started, add a prompt in the dedicated section."
+    "addPrompt": "To get started, add a prompt in the dedicated section.",
+    "generateData": "Generate today's data",
+    "generating": "Generating...",
+    "generateDescription": "No data yet for today."
   },
   "historic": {
     "title": "History",
