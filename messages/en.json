@@ -39,7 +39,7 @@
     "brandsCited": "Brands cited",
     "acrossPrompts": "across your prompts",
     "global": "Global",
-    "nextResult": "Results are upated every day at 2AM",
+    "nextResult": "Results are updated every day at 2AM",
     "addPrompt": "To get started, add a prompt in the dedicated section.",
     "generateData": "Generate today's data",
     "generating": "Generating...",
@@ -49,7 +49,7 @@
   "historic": {
     "title": "History",
     "subtitle": "Ranking evolution over the period",
-    "chartTitle": "Historic Rankings",
+    "chartTitle": "Historical Rankings",
     "chartSubtitle": "Results from previous days"
   },
   "settings": {

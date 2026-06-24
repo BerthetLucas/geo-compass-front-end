@@ -39,7 +39,7 @@
     "brandsCited": "Marques citées",
     "acrossPrompts": "sur vos prompts",
     "global": "Global",
-    "nextResult": "Les résultats sont mis à jour tout les jours à 2H00",
+    "nextResult": "Les résultats sont mis à jour tous les jours à 2H00",
     "addPrompt": "Pour commencer, ajoutez un prompt dans la section dédiée.",
     "generateData": "Générer les données du jour",
     "generating": "Génération en cours...",
@@ -61,9 +61,9 @@
       "description": "Recevoir des notifications par e-mail sur vos résultats de classement."
     },
     "openRouterApiKey": {
-      "label": "Clef API OpenRouter",
+      "label": "Clé API OpenRouter",
       "placeholder": "sk-or-...",
-      "active": "Clef active",
+      "active": "Clé active",
       "delete": "Supprimer la clef"
     }
   },
