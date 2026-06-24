@@ -43,7 +43,8 @@
     "addPrompt": "Pour commencer, ajoutez un prompt dans la section dédiée.",
     "generateData": "Générer les données du jour",
     "generating": "Génération en cours...",
-    "generateDescription": "Aucune donnée pour aujourd'hui."
+    "generateDescription": "Aucune donnée pour aujourd'hui.",
+    "generateError": "Erreur lors de la génération des données"
   },
   "historic": {
     "title": "Historique",

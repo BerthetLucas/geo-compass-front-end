@@ -6,6 +6,7 @@ import { LogOut } from "lucide-react"
 import { motion } from "motion/react"
 import { useNavItems, useSignOut } from "@/hooks/use-nav"
 import { LocaleSwitcher } from "@/components/layout/locale-switcher"
+import { cn } from "@/lib/utils"
 
 export const MobileBottomNav = () => {
   const pathname = usePathname()
@@ -19,6 +20,14 @@ export const MobileBottomNav = () => {
         <div className="flex items-center justify-around px-2 py-1">
           {navItems.map(({ href, label, icon: Icon }) => {
             const active = pathname === href
+            const iconClass = cn({
+              "text-primary": active,
+              "text-muted-foreground": !active,
+            })
+            const labelClass = cn("text-[10px] font-medium tracking-tight", {
+              "text-primary": active,
+              "text-muted-foreground": !active,
+            })
             return (
               <Link
                 key={href}
@@ -38,17 +47,11 @@ export const MobileBottomNav = () => {
                 >
                   <Icon
                     size={22}
-                    className={active ? "text-primary" : "text-muted-foreground"}
+                    className={iconClass}
                     strokeWidth={active ? 2.2 : 1.7}
                   />
                 </motion.div>
-                <span
-                  className={`text-[10px] font-medium tracking-tight ${
-                    active ? "text-primary" : "text-muted-foreground"
-                  }`}
-                >
-                  {label}
-                </span>
+                <span className={labelClass}>{label}</span>
               </Link>
             )
           })}
@@ -56,7 +59,11 @@ export const MobileBottomNav = () => {
             onClick={handleSignOut}
             className="flex min-w-14 flex-col items-center gap-0.5 px-4 py-2"
           >
-            <LogOut size={22} className="text-muted-foreground" strokeWidth={1.7} />
+            <LogOut
+              size={22}
+              className="text-muted-foreground"
+              strokeWidth={1.7}
+            />
             <span className="text-[10px] font-medium tracking-tight text-muted-foreground">
               {tAuth("signOut")}
             </span>

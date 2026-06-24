@@ -43,7 +43,8 @@
     "addPrompt": "To get started, add a prompt in the dedicated section.",
     "generateData": "Generate today's data",
     "generating": "Generating...",
-    "generateDescription": "No data yet for today."
+    "generateDescription": "No data yet for today.",
+    "generateError": "Error generating today's data"
   },
   "historic": {
     "title": "History",
