@@ -29,10 +29,12 @@ export const AppMenu = () => {
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2 py-1">
           <Hexagon
-            className="text-primary drop-shadow-[0_0_6px_oklch(0.50_0.19_162_/_0.4)] dark:drop-shadow-[0_0_6px_oklch(0.68_0.19_162_/_0.5)]"
+            className="text-primary drop-shadow-[0_0_6px_oklch(0.50_0.19_162/0.4)] dark:drop-shadow-[0_0_6px_oklch(0.68_0.19_162/0.5)]"
             size={20}
           />
-          <span className="font-heading font-semibold tracking-tight">GEO Compass</span>
+          <span className="font-heading font-semibold tracking-tight">
+            GEO Compass
+          </span>
         </div>
       </SidebarHeader>
       <SidebarContent>

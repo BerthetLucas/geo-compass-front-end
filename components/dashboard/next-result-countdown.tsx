@@ -30,11 +30,7 @@ export function NextResultCountdown() {
       <Card className="mt-4 flex flex-row items-center gap-3 p-4">
         <Info className="mt-0.5 size-4 shrink-0" />
         <p className="text-sm">{t("generateDescription")}</p>
-        <Button
-          size="sm"
-          onClick={() => runGeneration()}
-          disabled={isPending}
-        >
+        <Button size="sm" onClick={() => runGeneration()} disabled={isPending}>
           <Play className="size-3.5" />
           {isPending ? t("generating") : t("generateData")}
         </Button>
