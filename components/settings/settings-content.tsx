@@ -7,6 +7,7 @@ import type { SettingsFormValues } from "./settings-form/settings-schema"
 import { useTranslations } from "next-intl"
 import { toast } from "sonner"
 import { isDemoMode } from "@/lib/demo"
+import { SettingsFundingExplainer } from "./settings-funding-explainer"
 
 export function SettingsContent() {
   const t = useTranslations("settings")
@@ -41,6 +42,7 @@ export function SettingsContent() {
         <h1 className="text-2xl font-semibold">{t("title")}</h1>
         <p className="text-sm text-muted-foreground">{settings.email}</p>
       </div>
+      <SettingsFundingExplainer />
       <SettingsForm
         settings={settings}
         onSubmit={handleSubmit}

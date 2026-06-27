@@ -56,6 +56,14 @@
     "title": "Paramètres",
     "save": "Enregistrer",
     "saveSuccess": "Paramètres enregistrés.",
+    "funding": {
+      "donationsTitle": "Fonctionnement par dons",
+      "donationsDescription": "GEO Compass fonctionne grâce aux dons. Les modèles d'IA utilisés sont aussi peu coûteux que possible pour l'instant — 0,50 € peuvent suffire à plusieurs utilisateurs pendant plusieurs semaines. Ces dons couvrent la maintenance du service et, à terme, l'achat d'un nom de domaine dédié.",
+      "donationsLink": "Faire un don via PayPal",
+      "apiKeyTitle": "Utiliser votre propre clé",
+      "apiKeyDescription": "Vous pouvez renseigner votre propre clé API OpenRouter ci-dessous. Le site fonctionnera alors sur vos crédits personnels, sans consommer le budget partagé.",
+      "apiKeyLink": "Créer une clé sur OpenRouter"
+    },
     "emailNotifications": {
       "label": "Notifications par e-mail",
       "description": "Recevoir des notifications par e-mail sur vos résultats de classement."

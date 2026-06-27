@@ -56,6 +56,14 @@
     "title": "Settings",
     "save": "Save",
     "saveSuccess": "Settings saved.",
+    "funding": {
+      "donationsTitle": "Donation-powered",
+      "donationsDescription": "GEO Compass runs on donations. The AI models used are as low-cost as possible for now — €0.50 can keep several users running for weeks. Donations cover server maintenance and may one day fund a dedicated domain name.",
+      "donationsLink": "Donate via PayPal",
+      "apiKeyTitle": "Use your own key",
+      "apiKeyDescription": "You can enter your own OpenRouter API key below. The site will then run on your personal credits, without drawing from the shared budget.",
+      "apiKeyLink": "Create a key on OpenRouter"
+    },
     "emailNotifications": {
       "label": "Email notifications",
       "description": "Receive email notifications about your ranking results."
