@@ -1,6 +1,7 @@
 import { Plus_Jakarta_Sans, Inter, JetBrains_Mono } from "next/font/google"
 import { NextIntlClientProvider } from "next-intl"
 import { getMessages } from "next-intl/server"
+import { Analytics } from "@vercel/analytics/next"
 
 import "../globals.css"
 import { cn } from "@/lib/utils"
@@ -48,6 +49,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <Providers>{children}</Providers>
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   )
