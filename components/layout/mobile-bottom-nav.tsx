@@ -1,18 +1,13 @@
 "use client"
 
 import { usePathname, Link } from "@/lib/navigation"
-import { useTranslations } from "next-intl"
-import { LogOut } from "lucide-react"
 import { motion } from "motion/react"
-import { useNavItems, useSignOut } from "@/hooks/use-nav"
-import { LocaleSwitcher } from "@/components/layout/locale-switcher"
+import { useNavItems } from "@/hooks/use-nav"
 import { cn } from "@/lib/utils"
 
 export const MobileBottomNav = () => {
   const pathname = usePathname()
-  const tAuth = useTranslations("auth")
   const navItems = useNavItems()
-  const handleSignOut = useSignOut()
 
   return (
     <nav className="fixed right-0 bottom-0 left-0 z-50 md:hidden">
@@ -20,19 +15,11 @@ export const MobileBottomNav = () => {
         <div className="flex items-center justify-around px-2 py-1">
           {navItems.map(({ href, label, icon: Icon }) => {
             const active = pathname === href
-            const iconClass = cn({
-              "text-primary": active,
-              "text-muted-foreground": !active,
-            })
-            const labelClass = cn("text-[10px] font-medium tracking-tight", {
-              "text-primary": active,
-              "text-muted-foreground": !active,
-            })
             return (
               <Link
                 key={href}
                 href={href}
-                className="relative flex min-w-14 flex-col items-center gap-0.5 px-4 py-2"
+                className="relative flex min-w-0 flex-1 flex-col items-center gap-0.5 px-2 py-2"
               >
                 {active && (
                   <motion.span
@@ -47,28 +34,24 @@ export const MobileBottomNav = () => {
                 >
                   <Icon
                     size={22}
-                    className={iconClass}
+                    className={cn({
+                      "text-primary": active,
+                      "text-muted-foreground": !active,
+                    })}
                     strokeWidth={active ? 2.2 : 1.7}
                   />
                 </motion.div>
-                <span className={labelClass}>{label}</span>
+                <span
+                  className={cn("text-xs font-medium tracking-tight", {
+                    "text-primary": active,
+                    "text-muted-foreground": !active,
+                  })}
+                >
+                  {label}
+                </span>
               </Link>
             )
           })}
-          <button
-            onClick={handleSignOut}
-            className="flex min-w-14 flex-col items-center gap-0.5 px-4 py-2"
-          >
-            <LogOut
-              size={22}
-              className="text-muted-foreground"
-              strokeWidth={1.7}
-            />
-            <span className="text-[10px] font-medium tracking-tight text-muted-foreground">
-              {tAuth("signOut")}
-            </span>
-          </button>
-          <LocaleSwitcher />
         </div>
       </div>
     </nav>
