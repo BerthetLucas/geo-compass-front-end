@@ -12,6 +12,9 @@ import { LocaleSwitcher } from "@/components/layout/locale-switcher"
 import { useSignOut } from "@/hooks/use-nav"
 import { LogOut } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
+import { Button } from "../ui/button"
+import { useState } from "react"
+import { SettingsDeleteAccountDialog } from "./settings-delete-account-dialog"
 
 export function SettingsContent() {
   const t = useTranslations("settings")
@@ -42,6 +45,9 @@ export function SettingsContent() {
     )
   }
 
+  const [open, setOpen] = useState(false)
+  const onOpenChange = (open: boolean) => setOpen(open)
+
   return (
     <section className="mx-10 flex flex-col gap-6 pb-16">
       <div>
@@ -69,6 +75,16 @@ export function SettingsContent() {
           </button>
         </div>
       </div>
+      {!isDemo && (
+        <Button
+          variant="destructive"
+          className="mt-6 w-fit"
+          onClick={() => setOpen(true)}
+        >
+          {t("deleteAccount.button")}
+        </Button>
+      )}
+      <SettingsDeleteAccountDialog open={open} onOpenChange={onOpenChange} />
     </section>
   )
 }

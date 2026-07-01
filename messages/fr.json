@@ -75,6 +75,14 @@
       "placeholder": "sk-or-...",
       "active": "Clé active",
       "delete": "Supprimer la clef"
+    },
+    "deleteAccount": {
+      "button": "Supprimer mon compte",
+      "dialogTitle": "Suppression de votre compte",
+      "dialogDescription": "Attention cette action est irréversible. Vous ne pourrez plus accéder à votre compte et vos données seront supprimées définitivement.",
+      "cancel": "Annuler",
+      "confirm": "Je veux supprimer mon compte",
+      "error": "La suppression du compte a échoué."
     }
   },
   "roadmap": {

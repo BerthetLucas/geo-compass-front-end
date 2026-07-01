@@ -75,6 +75,14 @@
       "placeholder": "sk-or-...",
       "active": "Key active",
       "delete": "Delete key"
+    },
+    "deleteAccount": {
+      "button": "Delete my account",
+      "dialogTitle": "Delete your account",
+      "dialogDescription": "Warning, this action is irreversible. You will no longer be able to access your account and your data will be permanently deleted.",
+      "cancel": "Cancel",
+      "confirm": "I want to delete my account",
+      "error": "Account deletion failed."
     }
   },
   "roadmap": {

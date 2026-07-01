@@ -67,7 +67,7 @@ export const AppMenu = () => {
         <SidebarSeparator />
         <SidebarMenu>
           <SidebarMenuItem>
-            <div className="flex items-center justify-between px-2 py-1">
+            <div className="flex w-fit items-center justify-center px-2 py-1 md:gap-3">
               <SidebarMenuButton onClick={handleSignOut} className="flex-1">
                 <LogOut size={18} />
                 <span>{tAuth("signOut")}</span>
