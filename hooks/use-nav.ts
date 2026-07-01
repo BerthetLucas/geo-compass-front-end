@@ -3,6 +3,7 @@ import {
   LineChart,
   MessageSquare,
   Settings,
+  Sparkles,
 } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useRouter } from "@/lib/navigation"
@@ -16,6 +17,7 @@ export function useNavItems() {
     { href: "/historic", label: t("history"), icon: LineChart },
     { href: "/prompts", label: t("prompts"), icon: MessageSquare },
     { href: "/settings", label: t("settings"), icon: Settings },
+    { href: "/roadmap", label: t("roadmap"), icon: Sparkles },
   ]
 }
 

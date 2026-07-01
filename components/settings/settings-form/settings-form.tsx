@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Field } from "@/components/ui/field"
+import { Badge } from "@/components/ui/badge"
 import { useTranslations } from "next-intl"
 import { useSettingsForm } from "./use-settings-form"
 import type { SettingsFormValues } from "./settings-schema"
@@ -41,15 +42,18 @@ export function SettingsForm({
             <input
               id="email-notifications"
               type="checkbox"
-              className="h-4 w-4 cursor-pointer rounded border-border accent-primary"
+              className="h-4 w-4 cursor-not-allowed rounded border-border accent-primary opacity-40"
               {...register("emailNotifications")}
-              disabled={isDemo}
+              disabled
             />
-            <Label htmlFor="email-notifications">
+            <Label htmlFor="email-notifications" className="opacity-40">
               {t("emailNotifications.label")}
             </Label>
+            <Badge variant="secondary">
+              {t("soon")}
+            </Badge>
           </div>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground opacity-40">
             {t("emailNotifications.description")}
           </p>
         </Field>

@@ -7,10 +7,17 @@ import type { SettingsFormValues } from "./settings-form/settings-schema"
 import { useTranslations } from "next-intl"
 import { toast } from "sonner"
 import { isDemoMode } from "@/lib/demo"
+import { SettingsFundingExplainer } from "./settings-funding-explainer"
+import { LocaleSwitcher } from "@/components/layout/locale-switcher"
+import { useSignOut } from "@/hooks/use-nav"
+import { LogOut } from "lucide-react"
+import { Separator } from "@/components/ui/separator"
 
 export function SettingsContent() {
   const t = useTranslations("settings")
+  const tAuth = useTranslations("auth")
   const isDemo = isDemoMode()
+  const handleSignOut = useSignOut()
   const { data: settings } = useGetUserSettingsSuspenseQuery()
   const { mutate, isPending } = useUpdateUserSettingsMutation()
 
@@ -41,6 +48,7 @@ export function SettingsContent() {
         <h1 className="text-2xl font-semibold">{t("title")}</h1>
         <p className="text-sm text-muted-foreground">{settings.email}</p>
       </div>
+      <SettingsFundingExplainer />
       <SettingsForm
         settings={settings}
         onSubmit={handleSubmit}
@@ -48,6 +56,19 @@ export function SettingsContent() {
         isSubmitting={isPending}
         isDemo={isDemo}
       />
+      <div className="flex flex-col gap-4 md:hidden">
+        <Separator />
+        <div className="flex items-center justify-between">
+          <LocaleSwitcher />
+          <button
+            onClick={handleSignOut}
+            className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <LogOut size={16} />
+            {tAuth("signOut")}
+          </button>
+        </div>
+      </div>
     </section>
   )
 }
