@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "title": "GEO Compass — Classement de marques IA",
+    "description": "Suivez le classement de votre marque dans les réponses des IA (ChatGPT, Claude, Gemini...) et pilotez votre visibilité GEO."
+  },
   "auth": {
     "login": {
       "title": "Bienvenue",
