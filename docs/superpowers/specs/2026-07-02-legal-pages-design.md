@@ -1,7 +1,7 @@
 # Legal pages (mentions légales & CGU) — Design
 
 ## Why
-The site is hosted on Vercel and needs a legal notice page and terms of service page, as is required for a publicly deployed site in France. No legal entity exists yet, so content will use explicit placeholders for company-specific facts.
+The site is hosted on Vercel and needs a legal notice page and terms of service page, as is required for a publicly deployed site in France. The site is edited by an individual (Lucas Berthet), not a registered company — no SIRET.
 
 ## Routes
 - `/legal` — mentions légales / legal notice
@@ -19,10 +19,10 @@ Both live under a new route group `app/[locale]/(legal)/` (public, no auth guard
 Content sourced from `messages/en.json` / `messages/fr.json` under new `legal` and `terms` namespaces, rendered via `useTranslations`/`getTranslations`.
 
 ### Legal notice content sections
-- Éditeur du site: `[RAISON SOCIALE / NOM]`, `[ADRESSE]`, `[SIRET]` (placeholders, clearly marked to fill in before real launch)
-- Directeur de publication: `[NOM]`
-- Contact: `[EMAIL]`
-- Hébergeur: Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA (vercel.com) — real, public info, not a placeholder
+- Éditeur du site: Lucas Berthet, éditeur individuel (site personnel, non professionnel). Adresse non publiée : conformément à l'article 6-III de la LCEN, un éditeur non-professionnel peut ne pas rendre son adresse publique, à condition de l'avoir communiquée à son hébergeur (obligation satisfaite via Vercel).
+- Site web: lucasberthet.io
+- Contact: lu.berthet@gmail.com
+- Hébergeur: Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA (vercel.com) — real, public info
 - Propriété intellectuelle (standard boilerplate)
 
 ### Terms of service content sections
