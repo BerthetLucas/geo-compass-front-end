@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "title": "GEO Compass — AI Brand Rankings",
+    "description": "Track your brand's ranking in AI answers (ChatGPT, Claude, Gemini...) and steer your GEO visibility."
+  },
   "auth": {
     "login": {
       "title": "Welcome",
