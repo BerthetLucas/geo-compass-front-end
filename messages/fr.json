@@ -1,4 +1,7 @@
 {
+  "common": {
+    "back": "Retour"
+  },
   "metadata": {
     "title": "GEO Compass — Classement de marques IA",
     "description": "Suivez le classement de votre marque dans les réponses des IA (ChatGPT, Claude, Gemini...) et pilotez votre visibilité GEO."
@@ -145,7 +148,7 @@
     },
     "ip": {
       "heading": "Propriété intellectuelle",
-      "body": "Le nom GEO Compass, son logo et l'ensemble des contenus présents sur ce site (textes, graphismes, code) sont la propriété de leur auteur respectif, sauf mention contraire. Toute reproduction, représentation ou utilisation sans autorisation préalable est interdite."
+      "body": "Le nom GEO Compass, son logo et les contenus présents sur ce site (textes, graphismes) sont la propriété de leur auteur respectif, sauf mention contraire. Le code source du site peut être publié ou distribué sous une licence spécifique ; le cas échéant, les termes de cette licence prévalent sur la présente clause pour tout ce qui concerne le code."
     },
     "liability": {
       "heading": "Responsabilité",
@@ -174,7 +177,7 @@
     },
     "ip": {
       "heading": "Propriété intellectuelle",
-      "body": "L'ensemble des éléments du service GEO Compass (marque, interface, code) demeure la propriété de son auteur. Les utilisateurs conservent la propriété des prompts et données qu'ils soumettent."
+      "body": "La marque et l'interface du service GEO Compass demeurent la propriété de son auteur. Le code source peut être publié ou distribué sous une licence spécifique, auquel cas les termes de cette licence s'appliquent. Les utilisateurs conservent la propriété des prompts et données qu'ils soumettent."
     },
     "changes": {
       "heading": "Modification des CGU",
@@ -183,6 +186,31 @@
     "law": {
       "heading": "Droit applicable",
       "body": "Les présentes conditions générales d'utilisation sont soumises au droit français. Tout litige relève de la compétence des tribunaux français."
+    }
+  },
+  "privacy": {
+    "title": "Politique de confidentialité",
+    "linkLabel": "Confidentialité",
+    "lastUpdated": "Dernière mise à jour : juillet 2026",
+    "data": {
+      "heading": "Données collectées",
+      "body": "GEO Compass collecte votre adresse email et votre mot de passe (stocké de façon chiffrée) lors de la création de votre compte, ainsi que les prompts et données que vous soumettez pour l'utilisation du service."
+    },
+    "purpose": {
+      "heading": "Finalité du traitement",
+      "body": "Ces données sont utilisées pour créer et gérer votre compte, vous permettre d'accéder au service et vous contacter si nécessaire concernant votre compte. Aucune donnée n'est utilisée à des fins de prospection commerciale."
+    },
+    "retention": {
+      "heading": "Durée de conservation",
+      "body": "Vos données sont conservées tant que votre compte est actif. Vous pouvez demander leur suppression à tout moment en contactant l'éditeur du site."
+    },
+    "sharing": {
+      "heading": "Partage des données",
+      "body": "Vos données ne sont ni vendues ni partagées à des fins commerciales. Elles peuvent être traitées par les prestataires techniques nécessaires au fonctionnement du service (hébergement, base de données), soumis à leurs propres obligations de confidentialité."
+    },
+    "rights": {
+      "heading": "Vos droits",
+      "body": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ces droits, contactez lu.berthet@gmail.com."
     }
   }
 }

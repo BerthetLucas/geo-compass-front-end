@@ -1,3 +1,5 @@
+import { LegalBackButton } from "@/components/layout/legal-back-button"
+
 export default function LegalLayout({
   children,
 }: {
@@ -5,7 +7,10 @@ export default function LegalLayout({
 }) {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto max-w-2xl px-6 py-16">{children}</div>
+      <div className="mx-auto flex max-w-2xl flex-col gap-8 px-6 py-16">
+        <LegalBackButton />
+        {children}
+      </div>
     </div>
   )
 }

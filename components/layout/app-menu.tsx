@@ -23,6 +23,7 @@ export const AppMenu = () => {
   const tAuth = useTranslations("auth")
   const tLegal = useTranslations("legal")
   const tTerms = useTranslations("terms")
+  const tPrivacy = useTranslations("privacy")
   const navItems = useNavItems()
   const handleSignOut = useSignOut()
 
@@ -78,13 +79,17 @@ export const AppMenu = () => {
             </div>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <div className="flex items-center gap-2 px-2 pb-1 text-xs text-muted-foreground">
-              <Link href="/legal" className="hover:text-foreground">
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 px-2 pb-1 text-xs text-muted-foreground">
+              <Link href="/legal" className="shrink-0 hover:text-foreground">
                 {tLegal("linkLabel")}
               </Link>
-              <span>·</span>
-              <Link href="/terms" className="hover:text-foreground">
+              <span className="shrink-0">·</span>
+              <Link href="/terms" className="shrink-0 hover:text-foreground">
                 {tTerms("linkLabel")}
+              </Link>
+              <span className="shrink-0">·</span>
+              <Link href="/privacy" className="shrink-0 hover:text-foreground">
+                {tPrivacy("linkLabel")}
               </Link>
             </div>
           </SidebarMenuItem>

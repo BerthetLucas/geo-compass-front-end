@@ -29,12 +29,12 @@ export function FeatureCard({
             <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/10">
               <Icon className="h-3.5 w-3.5 text-primary" />
             </div>
-            {title}
+            <span className="min-w-0 wrap-break-word">{title}</span>
           </div>
         </CardTitle>
         <CardDescription>{description}</CardDescription>
         <CardAction>
-          <Badge variant="secondary">
+          <Badge variant="secondary" className="shrink-0">
             {soonLabel}
           </Badge>
         </CardAction>

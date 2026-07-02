@@ -9,6 +9,7 @@ import { toast } from "sonner"
 import { isDemoMode } from "@/lib/demo"
 import { SettingsFundingExplainer } from "./settings-funding-explainer"
 import { LocaleSwitcher } from "@/components/layout/locale-switcher"
+import { Link } from "@/lib/navigation"
 import { useSignOut } from "@/hooks/use-nav"
 import { LogOut } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
@@ -19,6 +20,9 @@ import { SettingsDeleteAccountDialog } from "./settings-delete-account-dialog"
 export function SettingsContent() {
   const t = useTranslations("settings")
   const tAuth = useTranslations("auth")
+  const tLegal = useTranslations("legal")
+  const tTerms = useTranslations("terms")
+  const tPrivacy = useTranslations("privacy")
   const isDemo = isDemoMode()
   const handleSignOut = useSignOut()
   const { data: settings } = useGetUserSettingsSuspenseQuery()
@@ -73,6 +77,19 @@ export function SettingsContent() {
             <LogOut size={16} />
             {tAuth("signOut")}
           </button>
+        </div>
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+          <Link href="/legal" className="hover:text-foreground">
+            {tLegal("linkLabel")}
+          </Link>
+          <span>·</span>
+          <Link href="/terms" className="hover:text-foreground">
+            {tTerms("linkLabel")}
+          </Link>
+          <span>·</span>
+          <Link href="/privacy" className="hover:text-foreground">
+            {tPrivacy("linkLabel")}
+          </Link>
         </div>
       </div>
       {!isDemo && (
