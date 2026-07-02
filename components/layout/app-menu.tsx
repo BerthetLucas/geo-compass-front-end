@@ -21,6 +21,8 @@ import { LocaleSwitcher } from "@/components/layout/locale-switcher"
 export const AppMenu = () => {
   const pathname = usePathname()
   const tAuth = useTranslations("auth")
+  const tLegal = useTranslations("legal")
+  const tTerms = useTranslations("terms")
   const navItems = useNavItems()
   const handleSignOut = useSignOut()
 
@@ -73,6 +75,17 @@ export const AppMenu = () => {
                 <span>{tAuth("signOut")}</span>
               </SidebarMenuButton>
               <LocaleSwitcher />
+            </div>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <div className="flex items-center gap-2 px-2 pb-1 text-xs text-muted-foreground">
+              <Link href="/legal" className="hover:text-foreground">
+                {tLegal("linkLabel")}
+              </Link>
+              <span>·</span>
+              <Link href="/terms" className="hover:text-foreground">
+                {tTerms("linkLabel")}
+              </Link>
             </div>
           </SidebarMenuItem>
         </SidebarMenu>
