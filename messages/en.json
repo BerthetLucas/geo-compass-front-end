@@ -1,4 +1,7 @@
 {
+  "common": {
+    "back": "Back"
+  },
   "metadata": {
     "title": "GEO Compass — AI Brand Rankings",
     "description": "Track your brand's ranking in AI answers (ChatGPT, Claude, Gemini...) and steer your GEO visibility."
@@ -145,7 +148,7 @@
     },
     "ip": {
       "heading": "Intellectual property",
-      "body": "The GEO Compass name, logo, and all content on this site (texts, graphics, code) are the property of their respective author unless otherwise stated. Any reproduction, representation, or use without prior authorization is prohibited."
+      "body": "The GEO Compass name, logo, and content on this site (texts, graphics) are the property of their respective author unless otherwise stated. The site's source code may be published or distributed under a specific license; where applicable, the terms of that license prevail over this clause for anything related to the code."
     },
     "liability": {
       "heading": "Liability",
@@ -174,7 +177,7 @@
     },
     "ip": {
       "heading": "Intellectual property",
-      "body": "All elements of the GEO Compass service (brand, interface, code) remain the property of their author. Users retain ownership of the prompts and data they submit."
+      "body": "The GEO Compass brand and interface remain the property of their author. The source code may be published or distributed under a specific license, in which case the terms of that license apply. Users retain ownership of the prompts and data they submit."
     },
     "changes": {
       "heading": "Changes to these terms",
@@ -183,6 +186,31 @@
     "law": {
       "heading": "Governing law",
       "body": "These Terms of Service are governed by French law. Any dispute shall be submitted to the competent French courts."
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "linkLabel": "Privacy",
+    "lastUpdated": "Last updated: July 2026",
+    "data": {
+      "heading": "Data collected",
+      "body": "GEO Compass collects your email address and password (stored encrypted) when you create an account, as well as the prompts and data you submit while using the service."
+    },
+    "purpose": {
+      "heading": "Purpose of processing",
+      "body": "This data is used to create and manage your account, provide access to the service, and contact you if needed regarding your account. No data is used for marketing purposes."
+    },
+    "retention": {
+      "heading": "Retention period",
+      "body": "Your data is kept for as long as your account remains active. You may request deletion at any time by contacting the site publisher."
+    },
+    "sharing": {
+      "heading": "Data sharing",
+      "body": "Your data is never sold or shared for commercial purposes. It may be processed by the technical providers necessary to run the service (hosting, database), who are bound by their own confidentiality obligations."
+    },
+    "rights": {
+      "heading": "Your rights",
+      "body": "Under GDPR, you have the right to access, rectify, and delete your data. To exercise these rights, contact lu.berthet@gmail.com."
     }
   }
 }

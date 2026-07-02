@@ -7,6 +7,7 @@ export default async function RegisterPage() {
   const t = await getTranslations("auth.register")
   const tLegal = await getTranslations("legal")
   const tTerms = await getTranslations("terms")
+  const tPrivacy = await getTranslations("privacy")
 
   return (
     <div className="grid h-screen w-full lg:grid-cols-2">
@@ -30,6 +31,10 @@ export default async function RegisterPage() {
           {" · "}
           <Link href="/terms" className="underline underline-offset-4">
             {tTerms("linkLabel")}
+          </Link>
+          {" · "}
+          <Link href="/privacy" className="underline underline-offset-4">
+            {tPrivacy("linkLabel")}
           </Link>
         </p>
       </div>

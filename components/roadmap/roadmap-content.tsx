@@ -13,7 +13,7 @@ export function RoadmapContent() {
   const t = useTranslations("roadmap")
 
   return (
-    <section className="mx-10 flex flex-col gap-6 pb-16">
+    <section className="mx-4 flex flex-col gap-6 pb-16 md:mx-10">
       <div>
         <h1 className="text-2xl font-semibold">{t("title")}</h1>
         <p className="text-sm text-muted-foreground">{t("subtitle")}</p>
