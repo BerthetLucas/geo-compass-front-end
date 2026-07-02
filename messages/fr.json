@@ -126,5 +126,61 @@
       "label": "Prompt",
       "placeholder": "Quelles sont les meilleures chaussures de running pour un marathon ?"
     }
+  },
+  "legal": {
+    "title": "Mentions légales",
+    "lastUpdated": "Dernière mise à jour : juillet 2026",
+    "publisher": {
+      "heading": "Éditeur du site",
+      "body": "Ce site est édité par Lucas Berthet, à titre individuel (éditeur non professionnel).",
+      "contact": "Contact : lu.berthet@gmail.com",
+      "website": "Site web : lucasberthet.io",
+      "addressNotice": "Conformément à l'article 6-III de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN), un éditeur non professionnel n'est pas tenu de rendre son adresse postale publique. Cette adresse a été communiquée à l'hébergeur et peut être transmise aux autorités judiciaires compétentes sur demande."
+    },
+    "hosting": {
+      "heading": "Hébergement",
+      "body": "Ce site est hébergé par Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA.",
+      "website": "Site web : vercel.com"
+    },
+    "ip": {
+      "heading": "Propriété intellectuelle",
+      "body": "Le nom GEO Compass, son logo et l'ensemble des contenus présents sur ce site (textes, graphismes, code) sont la propriété de leur auteur respectif, sauf mention contraire. Toute reproduction, représentation ou utilisation sans autorisation préalable est interdite."
+    },
+    "liability": {
+      "heading": "Responsabilité",
+      "body": "L'éditeur s'efforce de fournir des informations exactes mais ne peut garantir leur exhaustivité, leur exactitude ou leur mise à jour permanente. L'utilisation de ce site se fait sous la responsabilité de l'utilisateur."
+    }
+  },
+  "terms": {
+    "title": "Conditions générales d'utilisation",
+    "lastUpdated": "Dernière mise à jour : juillet 2026",
+    "intro": {
+      "heading": "Objet",
+      "body": "Les présentes conditions générales d'utilisation régissent l'accès et l'utilisation de GEO Compass, un service de suivi du classement d'une marque dans les réponses générées par des IA (ChatGPT, Claude, Gemini et autres modèles). En créant un compte ou en utilisant le service, vous acceptez les présentes conditions."
+    },
+    "account": {
+      "heading": "Compte et accès",
+      "body": "L'accès à GEO Compass nécessite la création d'un compte. Vous êtes responsable de la confidentialité de vos identifiants et de toute activité effectuée depuis votre compte."
+    },
+    "usage": {
+      "heading": "Utilisation du service",
+      "body": "GEO Compass est fourni en best-effort. Le service peut évoluer, être temporairement indisponible ou être interrompu sans préavis. Les classements sont générés à partir de réponses de modèles d'IA tiers et sont fournis à titre indicatif."
+    },
+    "liability": {
+      "heading": "Responsabilité",
+      "body": "GEO Compass ne saurait être tenu responsable des décisions prises sur la base des classements ou données fournies par le service, ni de la disponibilité ou de l'exactitude des modèles d'IA tiers qu'il interroge."
+    },
+    "ip": {
+      "heading": "Propriété intellectuelle",
+      "body": "L'ensemble des éléments du service GEO Compass (marque, interface, code) demeure la propriété de son auteur. Les utilisateurs conservent la propriété des prompts et données qu'ils soumettent."
+    },
+    "changes": {
+      "heading": "Modification des CGU",
+      "body": "Les présentes conditions générales d'utilisation peuvent être mises à jour à tout moment. La poursuite de l'utilisation du service après modification vaut acceptation des nouvelles conditions."
+    },
+    "law": {
+      "heading": "Droit applicable",
+      "body": "Les présentes conditions générales d'utilisation sont soumises au droit français. Tout litige relève de la compétence des tribunaux français."
+    }
   }
 }
