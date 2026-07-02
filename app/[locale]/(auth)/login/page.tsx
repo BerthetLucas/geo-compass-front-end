@@ -36,6 +36,15 @@ export default async function LoginPage() {
               {t("createOne")}
             </Link>
           </p>
+          <p className="text-center text-xs text-muted-foreground">
+            <Link href="/legal" className="underline underline-offset-4">
+              Mentions légales
+            </Link>
+            {" · "}
+            <Link href="/terms" className="underline underline-offset-4">
+              CGU
+            </Link>
+          </p>
         </div>
       </div>
       <div className="relative hidden h-full overflow-hidden opacity-50 lg:block">

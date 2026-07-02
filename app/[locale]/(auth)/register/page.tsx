@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { Link } from "@/lib/navigation"
 import { RegisterForm } from "@/components/auth/register-form/register-form"
 import { getTranslations } from "next-intl/server"
 
@@ -20,6 +21,15 @@ export default async function RegisterPage() {
         <div className="w-full max-w-sm">
           <RegisterForm />
         </div>
+        <p className="text-center text-xs text-muted-foreground">
+          <Link href="/legal" className="underline underline-offset-4">
+            Mentions légales
+          </Link>
+          {" · "}
+          <Link href="/terms" className="underline underline-offset-4">
+            CGU
+          </Link>
+        </p>
       </div>
       <div className="relative hidden h-full overflow-hidden opacity-50 lg:block">
         <Image src="/login.jpg" alt="" fill className="object-cover" priority />
