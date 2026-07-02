@@ -1,9 +1,12 @@
 import Image from "next/image"
+import { Link } from "@/lib/navigation"
 import { RegisterForm } from "@/components/auth/register-form/register-form"
 import { getTranslations } from "next-intl/server"
 
 export default async function RegisterPage() {
   const t = await getTranslations("auth.register")
+  const tLegal = await getTranslations("legal")
+  const tTerms = await getTranslations("terms")
 
   return (
     <div className="grid h-screen w-full lg:grid-cols-2">
@@ -20,6 +23,15 @@ export default async function RegisterPage() {
         <div className="w-full max-w-sm">
           <RegisterForm />
         </div>
+        <p className="text-center text-xs text-muted-foreground">
+          <Link href="/legal" className="underline underline-offset-4">
+            {tLegal("linkLabel")}
+          </Link>
+          {" · "}
+          <Link href="/terms" className="underline underline-offset-4">
+            {tTerms("linkLabel")}
+          </Link>
+        </p>
       </div>
       <div className="relative hidden h-full overflow-hidden opacity-50 lg:block">
         <Image src="/login.jpg" alt="" fill className="object-cover" priority />

@@ -6,6 +6,7 @@ import { routing } from "./i18n/routing"
 const intlMiddleware = createMiddleware(routing)
 
 const PUBLIC_AUTH_PATHS = ["/login", "/register"]
+const PUBLIC_PATHS = ["/legal", "/terms"]
 
 function getLocale(pathname: string): string {
   const segment = pathname.split("/")[1]
@@ -25,8 +26,14 @@ function stripLocale(pathname: string): string {
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
   const locale = getLocale(pathname)
-  const isPublicAuthPage = PUBLIC_AUTH_PATHS.includes(stripLocale(pathname))
+  const strippedPathname = stripLocale(pathname)
+  const isPublicAuthPage = PUBLIC_AUTH_PATHS.includes(strippedPathname)
+  const isPublicPage = PUBLIC_PATHS.includes(strippedPathname)
   const token = request.cookies.get("token")?.value
+
+  if (isPublicPage) {
+    return intlMiddleware(request)
+  }
 
   if (!token && !isPublicAuthPage) {
     return NextResponse.redirect(new URL(`/${locale}/login`, request.url))

@@ -126,5 +126,63 @@
       "label": "Prompt",
       "placeholder": "What are the best running shoes for marathon training?"
     }
+  },
+  "legal": {
+    "title": "Legal Notice",
+    "linkLabel": "Legal notice",
+    "lastUpdated": "Last updated: July 2026",
+    "publisher": {
+      "heading": "Site publisher",
+      "body": "This website is published by Lucas Berthet, acting as a private individual (non-professional publisher).",
+      "contact": "Contact: lu.berthet@gmail.com",
+      "website": "Website: lucasberthet.io",
+      "addressNotice": "In accordance with Article 6-III of the French LCEN (Loi pour la Confiance dans l'Économie Numérique), a non-professional publisher is not required to make their postal address public. This address has been provided to the hosting provider and can be disclosed to the competent judicial authorities upon request."
+    },
+    "hosting": {
+      "heading": "Hosting provider",
+      "body": "This website is hosted by Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA.",
+      "website": "Website: vercel.com"
+    },
+    "ip": {
+      "heading": "Intellectual property",
+      "body": "The GEO Compass name, logo, and all content on this site (texts, graphics, code) are the property of their respective author unless otherwise stated. Any reproduction, representation, or use without prior authorization is prohibited."
+    },
+    "liability": {
+      "heading": "Liability",
+      "body": "The publisher strives to provide accurate information but cannot guarantee it is exhaustive, complete, or up to date. Use of this site is at the user's own risk."
+    }
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "linkLabel": "Terms of use",
+    "lastUpdated": "Last updated: July 2026",
+    "intro": {
+      "heading": "Purpose",
+      "body": "These Terms of Service govern access to and use of GEO Compass, a service that tracks a brand's ranking in AI-generated answers (ChatGPT, Claude, Gemini, and other models). By creating an account or using the service, you agree to these terms."
+    },
+    "account": {
+      "heading": "Account and access",
+      "body": "Access to GEO Compass requires creating an account. You are responsible for the confidentiality of your credentials and for all activity under your account."
+    },
+    "usage": {
+      "heading": "Use of the service",
+      "body": "GEO Compass is provided on a best-effort basis. The service may evolve, be temporarily unavailable, or be discontinued without prior notice. Rankings are generated from third-party AI model outputs and are provided for informational purposes only."
+    },
+    "liability": {
+      "heading": "Liability",
+      "body": "GEO Compass cannot be held liable for decisions made based on the rankings or data provided by the service, nor for the availability or accuracy of third-party AI models it queries."
+    },
+    "ip": {
+      "heading": "Intellectual property",
+      "body": "All elements of the GEO Compass service (brand, interface, code) remain the property of their author. Users retain ownership of the prompts and data they submit."
+    },
+    "changes": {
+      "heading": "Changes to these terms",
+      "body": "These Terms of Service may be updated at any time. Continued use of the service after a change constitutes acceptance of the updated terms."
+    },
+    "law": {
+      "heading": "Governing law",
+      "body": "These Terms of Service are governed by French law. Any dispute shall be submitted to the competent French courts."
+    }
   }
 }

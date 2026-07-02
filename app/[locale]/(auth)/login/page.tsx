@@ -6,6 +6,8 @@ import { getTranslations } from "next-intl/server"
 
 export default async function LoginPage() {
   const t = await getTranslations("auth.login")
+  const tLegal = await getTranslations("legal")
+  const tTerms = await getTranslations("terms")
 
   return (
     <div className="grid h-screen w-full lg:grid-cols-2">
@@ -34,6 +36,15 @@ export default async function LoginPage() {
               className="text-primary underline underline-offset-4"
             >
               {t("createOne")}
+            </Link>
+          </p>
+          <p className="text-center text-xs text-muted-foreground">
+            <Link href="/legal" className="underline underline-offset-4">
+              {tLegal("linkLabel")}
+            </Link>
+            {" · "}
+            <Link href="/terms" className="underline underline-offset-4">
+              {tTerms("linkLabel")}
             </Link>
           </p>
         </div>
