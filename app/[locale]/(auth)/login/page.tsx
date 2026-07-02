@@ -6,6 +6,8 @@ import { getTranslations } from "next-intl/server"
 
 export default async function LoginPage() {
   const t = await getTranslations("auth.login")
+  const tLegal = await getTranslations("legal")
+  const tTerms = await getTranslations("terms")
 
   return (
     <div className="grid h-screen w-full lg:grid-cols-2">
@@ -38,11 +40,11 @@ export default async function LoginPage() {
           </p>
           <p className="text-center text-xs text-muted-foreground">
             <Link href="/legal" className="underline underline-offset-4">
-              Mentions légales
+              {tLegal("linkLabel")}
             </Link>
             {" · "}
             <Link href="/terms" className="underline underline-offset-4">
-              CGU
+              {tTerms("linkLabel")}
             </Link>
           </p>
         </div>

@@ -129,6 +129,7 @@
   },
   "legal": {
     "title": "Legal Notice",
+    "linkLabel": "Legal notice",
     "lastUpdated": "Last updated: July 2026",
     "publisher": {
       "heading": "Site publisher",
@@ -153,6 +154,7 @@
   },
   "terms": {
     "title": "Terms of Service",
+    "linkLabel": "Terms of use",
     "lastUpdated": "Last updated: July 2026",
     "intro": {
       "heading": "Purpose",

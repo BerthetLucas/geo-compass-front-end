@@ -129,6 +129,7 @@
   },
   "legal": {
     "title": "Mentions légales",
+    "linkLabel": "Mentions légales",
     "lastUpdated": "Dernière mise à jour : juillet 2026",
     "publisher": {
       "heading": "Éditeur du site",
@@ -153,6 +154,7 @@
   },
   "terms": {
     "title": "Conditions générales d'utilisation",
+    "linkLabel": "CGU",
     "lastUpdated": "Dernière mise à jour : juillet 2026",
     "intro": {
       "heading": "Objet",
