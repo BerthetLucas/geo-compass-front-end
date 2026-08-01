@@ -1,5 +1,4 @@
 import { type LucideIcon } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
 import {
   Card,
   CardAction,
@@ -7,19 +6,20 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { FeatureCardBadge } from "./feature-card-badge"
 
 interface FeatureCardProps {
   icon: LucideIcon
   title: string
   description: string
-  soonLabel: string
+  newFeature?: boolean
 }
 
 export function FeatureCard({
   icon: Icon,
   title,
   description,
-  soonLabel,
+  newFeature = false,
 }: FeatureCardProps) {
   return (
     <Card size="sm">
@@ -34,9 +34,7 @@ export function FeatureCard({
         </CardTitle>
         <CardDescription>{description}</CardDescription>
         <CardAction>
-          <Badge variant="secondary" className="shrink-0">
-            {soonLabel}
-          </Badge>
+          <FeatureCardBadge newFeature={newFeature} />
         </CardAction>
       </CardHeader>
     </Card>

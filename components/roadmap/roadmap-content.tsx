@@ -5,8 +5,8 @@ import { useTranslations } from "next-intl"
 import { FeatureCard } from "./feature-card"
 
 const features = [
-  { key: "modelSelection", icon: Bot },
-  { key: "emailAlerts", icon: BellRing },
+  { key: "emailAlerts", icon: BellRing, newFeature: true },
+  { key: "modelSelection", icon: Bot, newFeature: false },
 ] as const
 
 export function RoadmapContent() {
@@ -19,13 +19,13 @@ export function RoadmapContent() {
         <p className="text-sm text-muted-foreground">{t("subtitle")}</p>
       </div>
       <div className="flex flex-col gap-3">
-        {features.map(({ key, icon }) => (
+        {features.map(({ key, icon, newFeature }) => (
           <FeatureCard
             key={key}
             icon={icon}
             title={t(`features.${key}.title`)}
             description={t(`features.${key}.description`)}
-            soonLabel={t("soon")}
+            newFeature={newFeature}
           />
         ))}
       </div>

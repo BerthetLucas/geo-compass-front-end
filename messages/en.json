@@ -96,6 +96,7 @@
     "title": "What's new",
     "subtitle": "Features currently in development",
     "soon": "Coming soon",
+    "new": "New",
     "features": {
       "modelSelection": {
         "title": "AI model selection",

@@ -42,16 +42,12 @@ export function SettingsForm({
             <input
               id="email-notifications"
               type="checkbox"
-              className="h-4 w-4 cursor-not-allowed rounded border-border accent-primary opacity-40"
+              className="h-4 w-4 cursor-not-allowed rounded border-border accent-primary"
               {...register("emailNotifications")}
-              disabled
             />
             <Label htmlFor="email-notifications" className="opacity-40">
               {t("emailNotifications.label")}
             </Label>
-            <Badge variant="secondary">
-              {t("soon")}
-            </Badge>
           </div>
           <p className="text-sm text-muted-foreground opacity-40">
             {t("emailNotifications.description")}
