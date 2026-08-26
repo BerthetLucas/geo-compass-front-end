@@ -6,6 +6,7 @@ export function useCreatePromptMutation() {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: createPrompt,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: queryKeys.prompts.all }),
+    onSuccess: () =>
+      queryClient.invalidateQueries({ queryKey: queryKeys.prompts.all }),
   })
 }

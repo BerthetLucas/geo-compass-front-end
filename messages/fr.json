@@ -77,6 +77,11 @@
       "label": "Notifications par e-mail",
       "description": "Recevoir des notifications par e-mail sur vos résultats de classement."
     },
+    "models": {
+      "label": "Modèles IA",
+      "description": "Choisissez les modèles d'IA à interroger pour vos analyses.",
+      "minError": "Sélectionnez au moins un modèle."
+    },
     "openRouterApiKey": {
       "label": "Clé API OpenRouter",
       "placeholder": "sk-or-...",
@@ -98,10 +103,6 @@
     "soon": "Bientôt",
     "new": "Nouveau",
     "features": {
-      "modelSelection": {
-        "title": "Choix des modèles IA",
-        "description": "Sélectionnez les modèles d'IA à interroger pour vos analyses — GPT-4o, Gemini, Claude, Mistral et plus encore."
-      },
       "emailAlerts": {
         "title": "Alertes email journalières",
         "description": "Recevez chaque matin un résumé de l'évolution de vos classements de marques directement dans votre boîte mail."

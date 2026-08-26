@@ -33,6 +33,7 @@ export function SettingsContent() {
     mutate(
       {
         emailNotifications: values.emailNotifications,
+        selectedModels: values.selectedModels,
         ...(values.openRouterApiKey
           ? { openRouterApiKey: values.openRouterApiKey }
           : {}),
