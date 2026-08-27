@@ -10,6 +10,7 @@ import type { SettingsFormValues } from "./settings-schema"
 import type { UserSettings } from "@/types/user"
 import { FormProvider } from "react-hook-form"
 import { SettingsApiKeyLabel } from "./settings-api-key-field"
+import { SettingsModelsField } from "./settings-models-field"
 
 interface SettingsFormProps {
   settings: UserSettings
@@ -30,6 +31,7 @@ export function SettingsForm({
 
   const methods = useSettingsForm({
     emailNotifications: settings.emailNotifications,
+    selectedModels: settings.selectedModels,
   })
 
   const { handleSubmit, register } = methods
@@ -61,6 +63,13 @@ export function SettingsForm({
             isSubmitting={isSubmitting}
             isDemo={isDemo}
           />
+        </Field>
+        <Field>
+          <Label>{t("models.label")}</Label>
+          <p className="text-sm text-muted-foreground">
+            {t("models.description")}
+          </p>
+          <SettingsModelsField />
         </Field>
 
         {!isDemo && (

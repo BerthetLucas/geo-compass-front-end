@@ -8,6 +8,7 @@ export function useSettingsForm(defaultValues: Partial<SettingsFormValues>) {
     defaultValues: {
       emailNotifications: false,
       openRouterApiKey: "",
+      selectedModels: [],
       ...defaultValues,
     },
   })

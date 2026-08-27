@@ -83,4 +83,5 @@ export const DEMO_USER_SETTINGS: UserSettings = {
   email: DEMO_EMAIL,
   emailNotifications: false,
   hasOpenRouterApiKey: true,
+  selectedModels: DEMO_MODELS,
 }

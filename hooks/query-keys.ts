@@ -5,6 +5,9 @@ export const queryKeys = {
   prompts: {
     all: ["prompts"] as const,
   },
+  llm: {
+    models: ["llm-models"] as const,
+  },
   ranking: {
     daily: ["daily-ranking"] as const,
     historic: (startDate: string, endDate: string) =>
