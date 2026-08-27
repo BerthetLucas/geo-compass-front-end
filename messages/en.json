@@ -110,6 +110,10 @@
       "modelSelection": {
         "title": "AI model selection",
         "description": "Choose which AI models to query for your analyses — GPT-4o, Gemini, Claude, Mistral, and more."
+      },
+      "autoLatestModels": {
+        "title": "Always the latest models",
+        "description": "OpenRouter models will auto-update so your analyses always run against each provider's newest release, with no manual switching."
       }
     }
   },
