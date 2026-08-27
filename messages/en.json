@@ -106,6 +106,10 @@
       "emailAlerts": {
         "title": "Daily email alerts",
         "description": "Receive a morning digest of your brand ranking changes straight to your inbox."
+      },
+      "modelSelection": {
+        "title": "AI model selection",
+        "description": "Choose which AI models to query for your analyses — GPT-4o, Gemini, Claude, Mistral, and more."
       }
     }
   },

@@ -106,6 +106,10 @@
       "emailAlerts": {
         "title": "Alertes email journalières",
         "description": "Recevez chaque matin un résumé de l'évolution de vos classements de marques directement dans votre boîte mail."
+      },
+      "modelSelection": {
+        "title": "Choix des modèles IA",
+        "description": "Sélectionnez les modèles d'IA à interroger pour vos analyses — GPT-4o, Gemini, Claude, Mistral et plus encore."
       }
     }
   },

@@ -1,11 +1,12 @@
 "use client"
 
-import { BellRing } from "lucide-react"
+import { BellRing, Bot } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { FeatureCard } from "./feature-card"
 
 const features = [
   { key: "emailAlerts", icon: BellRing, newFeature: true },
+  { key: "modelSelection", icon: Bot, newFeature: true },
 ] as const
 
 export function RoadmapContent() {
