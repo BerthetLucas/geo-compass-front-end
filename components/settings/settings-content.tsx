@@ -54,7 +54,7 @@ export function SettingsContent() {
   const onOpenChange = (open: boolean) => setOpen(open)
 
   return (
-    <section className="mx-10 flex flex-col gap-6 pb-16">
+    <section className="mx-10 flex flex-col gap-6">
       <div>
         <h1 className="text-2xl font-semibold">{t("title")}</h1>
         <p className="text-sm text-muted-foreground">{settings.email}</p>
@@ -67,6 +67,18 @@ export function SettingsContent() {
         isSubmitting={isPending}
         isDemo={isDemo}
       />
+      {!isDemo && (
+        <div className="flex flex-col gap-5 rounded-lg border border-destructive p-5">
+          <p className="text-destructive">Danger Zone</p>
+          <Button
+            variant="destructive"
+            className="w-full"
+            onClick={() => setOpen(true)}
+          >
+            {t("deleteAccount.button")}
+          </Button>
+        </div>
+      )}
       <div className="flex flex-col gap-4 md:hidden">
         <Separator />
         <div className="flex items-center justify-between">
@@ -93,15 +105,6 @@ export function SettingsContent() {
           </Link>
         </div>
       </div>
-      {!isDemo && (
-        <Button
-          variant="destructive"
-          className="mt-6 w-fit"
-          onClick={() => setOpen(true)}
-        >
-          {t("deleteAccount.button")}
-        </Button>
-      )}
       <SettingsDeleteAccountDialog open={open} onOpenChange={onOpenChange} />
     </section>
   )
